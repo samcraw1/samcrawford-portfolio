@@ -1,0 +1,21 @@
+# Personal notes
+PROJECT_NOTES.md
+
+# Terraform
+*.tfstate
+*.tfstate.*
+.terraform/
+.terraform.lock.hcl
+*.tfvars
+crash.log
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# OS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/
