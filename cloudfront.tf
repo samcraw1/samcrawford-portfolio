@@ -183,13 +183,14 @@ resource "aws_cloudfront_distribution" "website" {
   # --- English: "Use our SSL certificate so the site works over HTTPS." ---
   viewer_certificate {
 
-    # English: "Use the ACM certificate we'll create in acm.tf."
-    # Dot decoder: aws_acm_certificate.website.arn
-    #   aws_acm_certificate = "an ACM certificate resource"
-    #     .website          = "the one nicknamed 'website'"
-    #       .arn            = "grab its ARN (Amazon serial number)"
-    # NOTE: This resource doesn't exist yet — acm.tf will create it.
-    acm_certificate_arn = aws_acm_certificate.website.arn
+    # English: "Use the ACM certificate, but ONLY after it's been validated."
+    # Dot decoder: aws_acm_certificate_validation.website.certificate_arn
+    #   aws_acm_certificate_validation = "the ACM validation waiter resource"
+    #     .website                     = "the one nicknamed 'website'"
+    #       .certificate_arn           = "grab the validated certificate's ARN"
+    # By referencing the VALIDATION resource instead of the certificate directly,
+    # Terraform knows to wait until the cert is fully approved before creating CloudFront.
+    acm_certificate_arn = aws_acm_certificate_validation.website.certificate_arn
 
     # English: "Use SNI (Server Name Indication) — the modern, free way
     #   to serve HTTPS. The alternative 'vip' costs $600/month."
