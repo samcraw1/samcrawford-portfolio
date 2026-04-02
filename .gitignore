@@ -13,6 +13,9 @@ override.tf.json
 *_override.tf
 *_override.tf.json
 
+# Lambda zip files (Terraform generates these from the .py source)
+lambda/*.zip
+
 # OS
 .DS_Store
 
