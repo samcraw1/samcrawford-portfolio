@@ -293,6 +293,14 @@ section {
   transform: translateY(-2px);
 }
 
+.project-image {
+  width: 100%;
+  height: 200px;
+  object-fit: contain;
+  background: #F8FAFC;
+  padding: 16px;
+}
+
 .project-placeholder {
   width: 100%;
   height: 180px;
