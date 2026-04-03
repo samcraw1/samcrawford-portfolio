@@ -1,0 +1,36 @@
+<svg width="600" height="340" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" style="background:#0f172a;border-radius:12px">
+<defs>
+<linearGradient id="dt-accent" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="#8b5cf6"/>
+<stop offset="100%" stop-color="#a78bfa"/>
+</linearGradient>
+</defs>
+<text x="300" y="32" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#94a3b8" letter-spacing="2">ARCHITECTURE</text>
+<rect x="220" y="50" width="160" height="44" rx="6" fill="#1e293b" stroke="#334155" stroke-width="0.75"/>
+<text x="300" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#64748b">Browser</text>
+<text x="300" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="500" fill="#e2e8f0">Plan Administrator</text>
+<line x1="300" y1="94" x2="300" y2="124" stroke="#475569" stroke-width="1"/>
+<rect x="150" y="124" width="300" height="38" rx="6" fill="#1e293b" stroke="url(#dt-accent)" stroke-width="0.75"/>
+<text x="300" y="147" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="500" fill="#c4b5fd">Vercel (Hosting + CDN)</text>
+<line x1="300" y1="162" x2="300" y2="190" stroke="#475569" stroke-width="1"/>
+<rect x="150" y="190" width="300" height="44" rx="6" fill="#1e293b" stroke="#334155" stroke-width="0.75"/>
+<text x="300" y="207" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="500" fill="#e2e8f0">React Application</text>
+<text x="300" y="224" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Notice Deadline Tracker UI</text>
+<line x1="200" y1="234" x2="140" y2="265" stroke="#475569" stroke-width="1"/>
+<line x1="300" y1="234" x2="300" y2="265" stroke="#475569" stroke-width="1"/>
+<line x1="400" y1="234" x2="460" y2="265" stroke="#475569" stroke-width="1"/>
+<rect x="40" y="265" width="200" height="56" rx="6" fill="#1e293b" stroke="#334155" stroke-width="0.75"/>
+<text x="140" y="285" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#fbbf24">Deadline Engine</text>
+<text x="140" y="301" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Compliance date calc</text>
+<text x="140" y="315" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Retirement plan rules</text>
+<rect x="220" y="265" width="160" height="56" rx="6" fill="#1e293b" stroke="#334155" stroke-width="0.75"/>
+<text x="300" y="285" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#34d399">Dashboard</text>
+<text x="300" y="301" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Upcoming deadlines</text>
+<text x="300" y="315" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Status tracking</text>
+<rect x="360" y="265" width="200" height="56" rx="6" fill="#1e293b" stroke="#334155" stroke-width="0.75"/>
+<text x="460" y="285" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#f472b6">Notifications</text>
+<text x="460" y="301" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Alert reminders</text>
+<text x="460" y="315" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Overdue warnings</text>
+<rect x="20" y="48" width="80" height="20" rx="4" fill="#8b5cf6" fill-opacity="0.15"/>
+<text x="60" y="62" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#c4b5fd">Compliance</text>
+</svg>

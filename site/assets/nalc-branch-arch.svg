@@ -1,0 +1,30 @@
+<svg width="600" height="340" viewBox="0 0 600 340" xmlns="http://www.w3.org/2000/svg" style="background:#0f172a;border-radius:12px">
+<defs>
+<linearGradient id="nalc-accent" x1="0" y1="0" x2="1" y2="0">
+<stop offset="0%" stop-color="#2563eb"/>
+<stop offset="100%" stop-color="#3b82f6"/>
+</linearGradient>
+</defs>
+<text x="300" y="32" text-anchor="middle" font-family="system-ui,sans-serif" font-size="13" font-weight="600" fill="#94a3b8" letter-spacing="2">ARCHITECTURE</text>
+<rect x="220" y="50" width="160" height="44" rx="6" fill="#1e293b" stroke="#334155" stroke-width="0.75"/>
+<text x="300" y="66" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" fill="#64748b">Browser</text>
+<text x="300" y="82" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="500" fill="#e2e8f0">Union Member</text>
+<line x1="300" y1="94" x2="300" y2="124" stroke="#475569" stroke-width="1"/>
+<rect x="150" y="124" width="300" height="44" rx="6" fill="#1e293b" stroke="url(#nalc-accent)" stroke-width="0.75"/>
+<text x="300" y="141" text-anchor="middle" font-family="system-ui,sans-serif" font-size="12" font-weight="500" fill="#60a5fa">Vercel</text>
+<text x="300" y="158" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Hosting + Edge Network + SSL</text>
+<line x1="300" y1="168" x2="300" y2="198" stroke="#475569" stroke-width="1"/>
+<rect x="150" y="198" width="300" height="70" rx="6" fill="#1e293b" stroke="#334155" stroke-width="0.75"/>
+<text x="300" y="218" text-anchor="middle" font-family="system-ui,sans-serif" font-size="11" font-weight="600" fill="#e2e8f0">Next.js Application</text>
+<text x="300" y="236" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Server-side rendering</text>
+<text x="300" y="250" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">Static page generation</text>
+<text x="300" y="264" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#94a3b8">News, resources, branch info</text>
+<line x1="200" y1="268" x2="140" y2="295" stroke="#475569" stroke-width="1"/>
+<line x1="400" y1="268" x2="460" y2="295" stroke="#475569" stroke-width="1"/>
+<rect x="40" y="295" width="200" height="30" rx="6" fill="#0f172a" stroke="#334155" stroke-width="0.5" stroke-dasharray="4 3"/>
+<text x="140" y="314" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#64748b">Branch news + meeting updates</text>
+<rect x="360" y="295" width="200" height="30" rx="6" fill="#0f172a" stroke="#334155" stroke-width="0.5" stroke-dasharray="4 3"/>
+<text x="460" y="314" text-anchor="middle" font-family="system-ui,sans-serif" font-size="10" fill="#64748b">Member resources + contacts</text>
+<rect x="20" y="48" width="60" height="20" rx="4" fill="#2563eb" fill-opacity="0.2"/>
+<text x="50" y="62" text-anchor="middle" font-family="system-ui,sans-serif" font-size="9" font-weight="600" fill="#60a5fa">Web</text>
+</svg>
