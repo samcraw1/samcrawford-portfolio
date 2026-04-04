@@ -120,6 +120,31 @@ function switchTab(tabName) {
   });
 }
 
+// SC logo click — go to overview
+document.getElementById('nav-logo').addEventListener('click', function(e) {
+  e.preventDefault();
+  switchTab('overview');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+});
+
+// Nav search — switches to repos tab and filters
+document.getElementById('nav-search').addEventListener('input', function() {
+  var query = this.value.toLowerCase();
+  if (query.length > 0) {
+    switchTab('repositories');
+    document.getElementById('repo-search').value = query;
+    filterRepos();
+  }
+});
+
+// "/" keyboard shortcut to focus search
+document.addEventListener('keydown', function(e) {
+  if (e.key === '/' && document.activeElement.tagName !== 'INPUT' && document.activeElement.tagName !== 'TEXTAREA') {
+    e.preventDefault();
+    document.getElementById('nav-search').focus();
+  }
+});
+
 // Nav tab clicks
 document.querySelectorAll('.gh-nav-tab, .gh-profile-tab').forEach(function(tab) {
   tab.addEventListener('click', function(e) {

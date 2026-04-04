@@ -86,9 +86,18 @@ a:hover { text-decoration: underline; }
   cursor: text;
 }
 
-.gh-nav-search span {
-  color: var(--text-secondary);
+.gh-nav-search-input {
+  background: transparent;
+  border: none;
+  color: var(--text);
   font-size: 0.875rem;
+  font-family: var(--font-body);
+  width: 100%;
+  outline: none;
+}
+
+.gh-nav-search-input::placeholder {
+  color: var(--text-secondary);
 }
 
 .gh-nav-links {
