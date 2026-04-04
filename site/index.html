@@ -123,19 +123,31 @@
         </div>
 
         <!-- UnionCase -->
-        <div class="project-card">
-          <img src="assets/unioncase-arch.svg" alt="UnionCase Architecture Diagram" class="project-image">
-          <div class="video-placeholder"><span class="play-icon"></span> Video Walkthrough Coming Soon</div>
+        <div class="project-card project-card-featured">
+          <div class="project-featured-media">
+            <img src="assets/unioncase-arch.svg" alt="UnionCase AWS Architecture Diagram" class="project-image">
+            <video class="project-video" controls preload="metadata" poster="">
+              <source src="assets/unioncase-walkthrough.mp4" type="video/mp4">
+            </video>
+          </div>
           <div class="project-content">
             <h3 class="project-title">UnionCase</h3>
             <p class="project-description">
-              Progressive web app for tracking union grievances and managing cases.
-              Helps union members organize and follow the status of their grievance filings.
+              Migrated a production union grievance tracking PWA from Vercel + Supabase
+              to a fully AWS-architected solution using 10 AWS services, completed in
+              ~75 minutes via AWS CLI. Aligned with AWS SAA-C03 exam concepts.
             </p>
             <div class="project-tags">
-              <span class="tag">PWA</span>
-              <span class="tag">React</span>
-              <span class="tag">Vercel</span>
+              <span class="tag">AWS</span>
+              <span class="tag">Lambda</span>
+              <span class="tag">RDS</span>
+              <span class="tag">CloudFront</span>
+              <span class="tag">Cognito</span>
+              <span class="tag">API Gateway</span>
+              <span class="tag">S3</span>
+              <span class="tag">Route 53</span>
+              <span class="tag">EventBridge</span>
+              <span class="tag">VPC</span>
             </div>
             <div class="project-links">
               <a href="https://app.unioncase.org" class="btn btn-primary btn-small" target="_blank" rel="noopener">Live Site</a>
