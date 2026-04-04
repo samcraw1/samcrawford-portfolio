@@ -11,7 +11,7 @@ var projects = {
     tags: ['React Native', 'iOS', 'Android', 'Vercel'],
     diagram: 'assets/memepickup-arch.svg',
     video: null,
-    github: 'https://github.com/samszn/memepickup-architecture',
+    github: 'https://github.com/samcraw1/memepickup-architecture',
     live: null
   },
   'unioncase': {
@@ -41,7 +41,7 @@ var projects = {
     tags: ['Python', 'AWS', 'Lambda', 'DynamoDB', 'Terraform'],
     diagram: 'assets/pybyte-arch.svg',
     video: null,
-    github: 'https://github.com/samszn/pybyte',
+    github: 'https://github.com/samcraw1/pybyte',
     live: null
   },
   'security-scanner': {
@@ -51,7 +51,7 @@ var projects = {
     tags: ['AWS', 'Python', 'Lambda', 'EventBridge', 'SNS', 'Terraform'],
     diagram: 'assets/security-scanner-diagram.svg',
     video: null,
-    github: 'https://github.com/samszn/aws-security-scanner',
+    github: 'https://github.com/samcraw1/aws-security-scanner',
     live: null
   },
   'usps-vehicle-inspection': {
