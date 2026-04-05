@@ -9,7 +9,7 @@ var projects = {
     title: 'MemePickup — AWS Migration',
     desc: 'Migrated MemePickup infrastructure to AWS. Full cloud deployment with architecture redesign.',
     tags: ['AWS', 'Migration', 'React Native', 'CloudFront', 'S3', 'Lambda'],
-    diagram: 'assets/memepickup-arch.svg',
+    diagram: 'assets/memepickup-migration-arch.svg',
     video: 'assets/memepickup-migration.mp4',
     github: 'https://github.com/samcraw1/memepickup-architecture',
     live: null
