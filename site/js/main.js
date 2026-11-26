@@ -4,6 +4,30 @@
 
 // --- Project Data ---
 var projects = {
+  'nba-data-pipeline': {
+    name: "nba-data-pipeline",
+    title: "NBA Analytics Pipeline",
+    desc: "Built a season-aware Python ETL pipeline with repeatable PostgreSQL upserts. Amazon RDS serves recent-season stats to FastAPI. Raw and processed CSVs land in S3, and Athena queries 111,285 player-game rows across five seasons. Validated Athena results against PostgreSQL.",
+    tags: ["Python", "SQL", "FastAPI", "PostgreSQL", "Amazon RDS", "S3", "Athena", "AWS Glue Data Catalog", "Terraform"],
+    architecture: ["Extract and transform NBA data by season with Python.", "Upsert recent seasons into PostgreSQL on RDS for FastAPI. Local PostgreSQL is the fallback.", "Upload raw and processed CSVs to S3 with boto3. Query the processed data in Athena using a Glue Data Catalog table managed with Terraform."],
+    github: "https://github.com/samcraw1/NBA-Project",
+  },
+  'nfl-wr-pipeline': {
+    name: "nfl-wr-pipeline",
+    title: "NFL Wide Receiver Rankings Pipeline",
+    desc: "Built a weekly pipeline to ingest NFL data, transform it into wide receiver rankings, and persist results in Supabase. Added data-quality checks and a dry-run mode alongside the GitHub Actions workflow.",
+    tags: ["Python", "Polars", "Parquet", "Supabase", "PostgreSQL", "GitHub Actions"],
+    architecture: ["Ingest weekly NFL data.", "Transform receiver statistics and generate rankings from the processed data.", "Persist results in Supabase and run the workflow through GitHub Actions."],
+    github: "https://github.com/samcraw1/nfl-wr-project",
+  },
+  'payment-reconciliation-api': {
+    name: "payment-reconciliation-api",
+    title: "Payment Reconciliation API",
+    desc: "Built a FastAPI service that uses MySQL and SQL joins to reconcile payment records. Covered reconciliation behavior with 34 automated pytest tests.",
+    tags: ["Python", "FastAPI", "MySQL", "SQL", "pytest"],
+    architecture: ["Store payment records in MySQL.", "Use SQL joins to reconcile records and return results through FastAPI.", "Verify reconciliation behavior with pytest."],
+    github: "https://github.com/samcraw1/Payment-Reconciliation-API",
+  },
   'memepickup-migration': {
     name: 'memepickup-migration',
     title: 'MemePickup — AWS Migration',
@@ -194,9 +218,19 @@ function openRepo(repoKey) {
   readme += '</div>';
   document.getElementById('repo-readme-content').innerHTML = readme;
 
-  // Architecture diagram
-  document.getElementById('repo-arch-content').innerHTML =
-    '<img src="' + project.diagram + '" alt="' + project.title + ' Architecture">';
+  // Architecture
+  var architecture = document.getElementById('repo-arch-content');
+  if (project.architecture) {
+    var steps = document.createElement('ol');
+    project.architecture.forEach(function(step) {
+      var item = document.createElement('li');
+      item.textContent = step;
+      steps.appendChild(item);
+    });
+    architecture.replaceChildren(steps);
+  } else {
+    architecture.innerHTML = '<img src="' + project.diagram + '" alt="' + project.title + ' Architecture">';
+  }
 
   // Video
   if (project.video) {
