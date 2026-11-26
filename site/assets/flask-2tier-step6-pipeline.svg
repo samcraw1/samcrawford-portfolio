@@ -1,0 +1,50 @@
+<svg width="100%" viewBox="0 0 650 380" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<style>text { font-family: -apple-system, system-ui, sans-serif; }</style>
+
+<text x="325" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#141413">Step 6: Pipeline — GitHub OIDC + Deploy Role</text>
+<text x="325" y="48" text-anchor="middle" font-size="11" fill="#737268">No long-lived keys — short-lived JWTs for CI/CD</text>
+
+<!-- GitHub Actions -->
+<rect x="60" y="75" width="220" height="50" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5"/>
+<text x="170" y="95" text-anchor="middle" font-size="13" font-weight="500" fill="#444441">GitHub Actions</text>
+<text x="170" y="112" text-anchor="middle" font-size="10" fill="#5f5e5a">Push to main → workflow runs</text>
+
+<line x1="280" y1="100" x2="340" y2="100" stroke="#737268" stroke-width="1" marker-end="url(#arrow)"/>
+<text x="310" y="92" font-size="9" fill="#737268">JWT</text>
+
+<!-- OIDC Provider -->
+<rect x="345" y="75" width="250" height="50" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="470" y="95" text-anchor="middle" font-size="13" font-weight="500" fill="#712b13">OIDC Identity Provider</text>
+<text x="470" y="112" text-anchor="middle" font-size="10" fill="#993c1d">Trusts GitHub's token issuer</text>
+
+<line x1="470" y1="125" x2="470" y2="155" stroke="#737268" stroke-width="1" marker-end="url(#arrow)"/>
+<text x="500" y="144" font-size="9" fill="#737268">AssumeRole</text>
+
+<!-- Deploy Role -->
+<rect x="270" y="158" width="400" height="65" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="470" y="178" text-anchor="middle" font-size="13" font-weight="500" fill="#712b13">Deploy Role (least privilege)</text>
+<text x="470" y="194" text-anchor="middle" font-size="10" fill="#993c1d">Trust: pinned to exact repo + branch (sub claim)</text>
+<text x="470" y="210" text-anchor="middle" font-size="10" fill="#993c1d">PassRole: iam:PassedToService = ecs-tasks only</text>
+
+<!-- Actions -->
+<line x1="350" y1="223" x2="200" y2="258" stroke="#737268" stroke-width="1" marker-end="url(#arrow)"/>
+<line x1="470" y1="223" x2="470" y2="258" stroke="#737268" stroke-width="1" marker-end="url(#arrow)"/>
+
+<rect x="60" y="260" width="200" height="40" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="160" y="278" text-anchor="middle" font-size="11" font-weight="500" fill="#712b13">ECR Push</text>
+<text x="160" y="292" text-anchor="middle" font-size="10" fill="#993c1d">Scoped to one repo ARN</text>
+
+<rect x="370" y="260" width="200" height="40" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="470" y="278" text-anchor="middle" font-size="11" font-weight="500" fill="#712b13">ECS Deploy</text>
+<text x="470" y="292" text-anchor="middle" font-size="10" fill="#993c1d">Register task def + update service</text>
+
+<!-- Key decisions -->
+<rect x="60" y="320" width="530" height="50" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5"/>
+<text x="325" y="340" text-anchor="middle" font-size="12" font-weight="600" fill="#444441">Key Decisions</text>
+<text x="325" y="358" text-anchor="middle" font-size="11" fill="#5f5e5a">OIDC over access keys: 1-hour JWT, no secret to leak, traceable per-run</text>
+</svg>

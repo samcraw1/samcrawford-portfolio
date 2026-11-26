@@ -1,0 +1,184 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1100 820" font-family="'Courier New', monospace">
+  <defs>
+    <!-- Background gradient -->
+    <linearGradient id="bg" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#001a33"/>
+      <stop offset="100%" style="stop-color:#002244"/>
+    </linearGradient>
+    <!-- Box styles -->
+    <linearGradient id="blueBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a3d6b"/>
+      <stop offset="100%" style="stop-color:#062a4a"/>
+    </linearGradient>
+    <linearGradient id="greenBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#0a4a2a"/>
+      <stop offset="100%" style="stop-color:#063a1a"/>
+    </linearGradient>
+    <linearGradient id="orangeBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a3a0a"/>
+      <stop offset="100%" style="stop-color:#3a2a06"/>
+    </linearGradient>
+    <linearGradient id="redBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#4a1a1a"/>
+      <stop offset="100%" style="stop-color:#3a0a0a"/>
+    </linearGradient>
+    <linearGradient id="purpleBox" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#2a1a4a"/>
+      <stop offset="100%" style="stop-color:#1a0a3a"/>
+    </linearGradient>
+  </defs>
+
+  <!-- Background -->
+  <rect width="1100" height="820" fill="url(#bg)" rx="8"/>
+
+  <!-- Title -->
+  <text x="550" y="38" text-anchor="middle" fill="#ffc000" font-size="20" font-weight="bold">USPS VEHICLE INSPECTION — AWS ARCHITECTURE</text>
+  <text x="550" y="58" text-anchor="middle" fill="#8faabe" font-size="12">12 AWS Services | Serverless + EC2 Compute | Terraform Managed</text>
+
+  <!-- ==================== MOBILE APP ==================== -->
+  <rect x="420" y="75" width="260" height="50" rx="6" fill="url(#blueBox)" stroke="#ffc000" stroke-width="1.5"/>
+  <text x="550" y="97" text-anchor="middle" fill="#ffc000" font-size="13" font-weight="bold">MOBILE APP</text>
+  <text x="550" y="115" text-anchor="middle" fill="#8faabe" font-size="10">Camera → OpenAI GPT-4o → Result</text>
+
+  <!-- Arrow down from app -->
+  <line x1="550" y1="125" x2="550" y2="155" stroke="#ffc000" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="555" y="145" fill="#8faabe" font-size="9">POST /inspections</text>
+
+  <!-- Split label -->
+  <text x="550" y="170" text-anchor="middle" fill="#c9d7df" font-size="10">Two paths to the same backend:</text>
+
+  <!-- ==================== PATH 1: SERVERLESS (left) ==================== -->
+  <rect x="80" y="185" width="320" height="235" rx="6" fill="none" stroke="#1a3a5c" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="240" y="203" text-anchor="middle" fill="#8faabe" font-size="11">PATH 1: SERVERLESS</text>
+
+  <!-- API Gateway -->
+  <rect x="150" y="215" width="180" height="42" rx="5" fill="url(#blueBox)" stroke="#4a9eff" stroke-width="1.2"/>
+  <text x="240" y="235" text-anchor="middle" fill="#4a9eff" font-size="12" font-weight="bold">API GATEWAY</text>
+  <text x="240" y="249" text-anchor="middle" fill="#8faabe" font-size="9">REST endpoint + CORS</text>
+
+  <!-- Arrow -->
+  <line x1="240" y1="257" x2="240" y2="280" stroke="#4a9eff" stroke-width="1"/>
+
+  <!-- Lambda -->
+  <rect x="150" y="280" width="180" height="42" rx="5" fill="url(#blueBox)" stroke="#4a9eff" stroke-width="1.2"/>
+  <text x="240" y="300" text-anchor="middle" fill="#4a9eff" font-size="12" font-weight="bold">LAMBDA</text>
+  <text x="240" y="314" text-anchor="middle" fill="#8faabe" font-size="9">Node.js 20 | Pay per request</text>
+
+  <!-- Arrow down from split to serverless -->
+  <path d="M 550 175 L 550 180 L 240 180 L 240 215" fill="none" stroke="#4a9eff" stroke-width="1.2"/>
+
+  <!-- Labels -->
+  <text x="240" y="370" text-anchor="middle" fill="#8faabe" font-size="9">$0/month (free tier)</text>
+  <text x="240" y="383" text-anchor="middle" fill="#8faabe" font-size="9">Scales automatically</text>
+  <text x="240" y="396" text-anchor="middle" fill="#8faabe" font-size="9">Runs only when called</text>
+
+  <!-- ==================== PATH 2: EC2 (right) ==================== -->
+  <rect x="480" y="185" width="540" height="290" rx="6" fill="none" stroke="#1a3a5c" stroke-width="1" stroke-dasharray="6,3"/>
+  <text x="750" y="203" text-anchor="middle" fill="#8faabe" font-size="11">PATH 2: EC2 COMPUTE (VPC 10.1.0.0/16)</text>
+
+  <!-- Arrow down from split to EC2 -->
+  <path d="M 550 175 L 550 180 L 750 180 L 750 215" fill="none" stroke="#00ff88" stroke-width="1.2"/>
+
+  <!-- ALB -->
+  <rect x="660" y="215" width="180" height="42" rx="5" fill="url(#greenBox)" stroke="#00ff88" stroke-width="1.2"/>
+  <text x="750" y="235" text-anchor="middle" fill="#00ff88" font-size="12" font-weight="bold">ALB</text>
+  <text x="750" y="249" text-anchor="middle" fill="#8faabe" font-size="9">Port 80 | Public subnets</text>
+
+  <!-- Public subnet label -->
+  <rect x="630" y="210" width="75" height="14" rx="3" fill="#003a20"/>
+  <text x="667" y="220" text-anchor="middle" fill="#00ff88" font-size="8">PUBLIC</text>
+
+  <!-- Arrows from ALB to EC2s -->
+  <line x1="710" y1="257" x2="630" y2="290" stroke="#00ff88" stroke-width="1"/>
+  <line x1="790" y1="257" x2="870" y2="290" stroke="#00ff88" stroke-width="1"/>
+
+  <!-- Private subnet box -->
+  <rect x="510" y="285" width="480" height="80" rx="4" fill="none" stroke="#1a5a3c" stroke-width="1" stroke-dasharray="4,2"/>
+  <rect x="515" y="280" width="110" height="14" rx="3" fill="#002a1a"/>
+  <text x="570" y="290" text-anchor="middle" fill="#00cc66" font-size="8">PRIVATE SUBNETS</text>
+
+  <!-- EC2 API 1 -->
+  <rect x="540" y="295" width="160" height="55" rx="5" fill="url(#greenBox)" stroke="#00cc66" stroke-width="1.2"/>
+  <text x="620" y="315" text-anchor="middle" fill="#00cc66" font-size="11" font-weight="bold">EC2 API</text>
+  <text x="620" y="328" text-anchor="middle" fill="#8faabe" font-size="9">us-east-1a</text>
+  <text x="620" y="341" text-anchor="middle" fill="#8faabe" font-size="8">Port 3000 | t3.micro</text>
+
+  <!-- EC2 API 2 -->
+  <rect x="800" y="295" width="160" height="55" rx="5" fill="url(#greenBox)" stroke="#00cc66" stroke-width="1.2"/>
+  <text x="880" y="315" text-anchor="middle" fill="#00cc66" font-size="11" font-weight="bold">EC2 API</text>
+  <text x="880" y="328" text-anchor="middle" fill="#8faabe" font-size="9">us-east-1b</text>
+  <text x="880" y="341" text-anchor="middle" fill="#8faabe" font-size="8">Port 3000 | t3.micro</text>
+
+  <!-- Auto Scaling label -->
+  <rect x="630" y="375" width="240" height="22" rx="4" fill="#0a2a1a" stroke="#00cc66" stroke-width="0.8"/>
+  <text x="750" y="390" text-anchor="middle" fill="#00cc66" font-size="10">AUTO SCALING GROUP (min 1, max 3)</text>
+
+  <!-- EC2 labels -->
+  <text x="750" y="420" text-anchor="middle" fill="#8faabe" font-size="9">~$70/month | Runs 24/7</text>
+  <text x="750" y="433" text-anchor="middle" fill="#8faabe" font-size="9">CPU > 60% → scale out</text>
+  <text x="750" y="446" text-anchor="middle" fill="#8faabe" font-size="9">Self-healing (replaces dead instances)</text>
+
+  <!-- ==================== SHARED DATA LAYER ==================== -->
+  <text x="550" y="490" text-anchor="middle" fill="#c9d7df" font-size="11">Both paths write to the same data stores:</text>
+
+  <!-- DynamoDB -->
+  <rect x="130" y="505" width="200" height="55" rx="5" fill="url(#orangeBox)" stroke="#ffc000" stroke-width="1.2"/>
+  <text x="230" y="527" text-anchor="middle" fill="#ffc000" font-size="12" font-weight="bold">DYNAMODB</text>
+  <text x="230" y="542" text-anchor="middle" fill="#8faabe" font-size="9">usps-vehicle-inspections</text>
+  <text x="230" y="553" text-anchor="middle" fill="#8faabe" font-size="8">Inspection records | On-demand</text>
+
+  <!-- S3 -->
+  <rect x="380" y="505" width="200" height="55" rx="5" fill="url(#orangeBox)" stroke="#ffc000" stroke-width="1.2"/>
+  <text x="480" y="527" text-anchor="middle" fill="#ffc000" font-size="12" font-weight="bold">S3</text>
+  <text x="480" y="542" text-anchor="middle" fill="#8faabe" font-size="9">usps-vehicle-images</text>
+  <text x="480" y="553" text-anchor="middle" fill="#8faabe" font-size="8">Vehicle photos | AES-256</text>
+
+  <!-- SNS -->
+  <rect x="630" y="505" width="200" height="55" rx="5" fill="url(#redBox)" stroke="#ff5555" stroke-width="1.2"/>
+  <text x="730" y="527" text-anchor="middle" fill="#ff5555" font-size="12" font-weight="bold">SNS</text>
+  <text x="730" y="542" text-anchor="middle" fill="#8faabe" font-size="9">usps-unsafe-vehicle-alerts</text>
+  <text x="730" y="553" text-anchor="middle" fill="#8faabe" font-size="8">UNSAFE → Email to supervisor</text>
+
+  <!-- Arrows from Lambda to data stores -->
+  <line x1="240" y1="322" x2="240" y2="505" stroke="#4a9eff" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="240" y1="400" x2="480" y2="505" stroke="#4a9eff" stroke-width="1" stroke-dasharray="4,2"/>
+
+  <!-- Arrows from EC2 to data stores -->
+  <line x1="620" y1="350" x2="230" y2="505" stroke="#00cc66" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="750" y1="397" x2="480" y2="505" stroke="#00cc66" stroke-width="1" stroke-dasharray="4,2"/>
+  <line x1="880" y1="350" x2="730" y2="505" stroke="#00cc66" stroke-width="1" stroke-dasharray="4,2"/>
+
+  <!-- ==================== DASHBOARD ==================== -->
+  <rect x="870" y="505" width="200" height="55" rx="5" fill="url(#purpleBox)" stroke="#aa88ff" stroke-width="1.2"/>
+  <text x="970" y="527" text-anchor="middle" fill="#aa88ff" font-size="12" font-weight="bold">DASHBOARD EC2</text>
+  <text x="970" y="542" text-anchor="middle" fill="#8faabe" font-size="9">Supervisor web UI</text>
+  <text x="970" y="553" text-anchor="middle" fill="#8faabe" font-size="8">Read-only | Public subnet</text>
+
+  <!-- Arrow from dashboard to DynamoDB and S3 -->
+  <path d="M 920 560 L 920 580 L 230 580 L 230 560" fill="none" stroke="#aa88ff" stroke-width="1" stroke-dasharray="4,2"/>
+  <path d="M 970 560 L 970 575 L 480 575 L 480 560" fill="none" stroke="#aa88ff" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="700" y="590" text-anchor="middle" fill="#aa88ff" font-size="8">READ ONLY (can never modify data)</text>
+
+  <!-- ==================== CLOUDWATCH ==================== -->
+  <rect x="130" y="610" width="940" height="65" rx="5" fill="url(#blueBox)" stroke="#66bbff" stroke-width="1.2"/>
+  <text x="550" y="632" text-anchor="middle" fill="#66bbff" font-size="13" font-weight="bold">CLOUDWATCH — MONITORING</text>
+  <text x="280" y="652" text-anchor="middle" fill="#8faabe" font-size="10">Dashboard: CPU, requests, health</text>
+  <text x="550" y="652" text-anchor="middle" fill="#8faabe" font-size="10">Alarm: CPU > 80% → SNS email</text>
+  <text x="820" y="652" text-anchor="middle" fill="#8faabe" font-size="10">Logs: API server output (7-day retention)</text>
+
+  <!-- ==================== SECURITY BOX ==================== -->
+  <rect x="130" y="695" width="455" height="110" rx="5" fill="url(#blueBox)" stroke="#1a5a8c" stroke-width="1"/>
+  <text x="357" y="715" text-anchor="middle" fill="#ffc000" font-size="12" font-weight="bold">SECURITY</text>
+  <text x="145" y="735" fill="#c9d7df" font-size="10">Network: API in private subnets (no public IP)</text>
+  <text x="145" y="752" fill="#c9d7df" font-size="10">Firewall: API SG only allows ALB (SG-to-SG)</text>
+  <text x="145" y="769" fill="#c9d7df" font-size="10">IAM: Instance Profiles (no access keys in code)</text>
+  <text x="145" y="786" fill="#c9d7df" font-size="10">Least privilege: Dashboard = read-only role</text>
+
+  <!-- ==================== IAM BOX ==================== -->
+  <rect x="615" y="695" width="455" height="110" rx="5" fill="url(#blueBox)" stroke="#1a5a8c" stroke-width="1"/>
+  <text x="842" y="715" text-anchor="middle" fill="#ffc000" font-size="12" font-weight="bold">IAM ROLES (LEAST PRIVILEGE)</text>
+  <text x="630" y="735" fill="#00cc66" font-size="10">API Role: DynamoDB R/W, S3 R/W, SNS Publish</text>
+  <text x="630" y="752" fill="#aa88ff" font-size="10">Dashboard Role: DynamoDB Read, S3 Read</text>
+  <text x="630" y="769" fill="#4a9eff" font-size="10">Lambda Role: DynamoDB PutItem, S3 PutObject</text>
+  <text x="630" y="786" fill="#8faabe" font-size="10">All scoped to specific resource ARNs</text>
+</svg>

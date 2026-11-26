@@ -77,6 +77,34 @@ var projects = {
     diagram: 'assets/pybyte-arch.svg',
     github: 'https://github.com/samcraw1/pybyte'
   },
+  'usps-scanner-migration': {
+    name: 'usps-scanner-aws-migration',
+    title: 'USPS Scanner AWS Migration',
+    summary: 'Moved the vehicle inspection app onto serverless AWS: Lambda, S3, CloudFront, and API Gateway.',
+    desc: 'Migrated the USPS vehicle inspection app to AWS as a full cloud deployment on a serverless architecture using Lambda, S3, CloudFront, and API Gateway.',
+    category: 'cloud',
+    tags: ['AWS', 'Migration', 'Lambda', 'S3', 'CloudFront', 'API Gateway'],
+    diagram: 'assets/usps-scanner-migration-arch.svg',
+    video: 'assets/usps-scanner-migration.mp4',
+    github: 'https://github.com/samcraw1/usps-vehicle-inspection'
+  },
+  'flask-2tier-aws': {
+    name: 'flask-2tier-aws',
+    title: 'Flask 2-Tier AWS Infrastructure',
+    summary: 'Modular Terraform for a Flask app: VPC, Multi-AZ RDS, Fargate, CloudFront, and OIDC-based CI/CD.',
+    desc: 'Modular Terraform infrastructure for a Flask web app: a 3-tier VPC with isolated database subnets, Multi-AZ RDS, serverless Fargate containers, a CloudFront CDN with TLS, and OIDC-based CI/CD with no stored secrets. Each module includes a RATIONALE.md explaining its design decisions.',
+    category: 'cloud',
+    tags: ['Terraform', 'ECS Fargate', 'RDS MySQL', 'CloudFront', 'VPC', 'GitHub OIDC', 'ALB', 'Secrets Manager'],
+    github: 'https://github.com/samcraw1/flask-2tier-aws',
+    steps: [
+      { label: 'Bootstrap: remote state', diagram: 'assets/flask-2tier-step1-bootstrap.svg' },
+      { label: 'Network: VPC and subnets', diagram: 'assets/flask-2tier-step2-network.svg' },
+      { label: 'Data: RDS and secrets', diagram: 'assets/flask-2tier-step3-data.svg' },
+      { label: 'Compute: Fargate and ALB', diagram: 'assets/flask-2tier-step4-compute.svg' },
+      { label: 'Edge: CloudFront and DNS', diagram: 'assets/flask-2tier-step5-edge.svg' },
+      { label: 'Pipeline: CI/CD', diagram: 'assets/flask-2tier-step6-pipeline.svg' }
+    ]
+  },
   'unioncase': {
     name: 'unioncase-grievance-tracker',
     title: 'UnionCase',
@@ -101,34 +129,92 @@ var projects = {
   'nalc-branch-226': {
     name: 'branch-226-digital',
     title: 'NALC Branch 226',
-    summary: 'Digital platform for a letter carriers’ union branch: news, resources, and branch information.',
-    desc: 'Digital platform for NALC Branch 226 union communications. Provides members with news, resources, and branch information.',
+    summary: 'Site for a 1,100-member Fort Worth letter carriers’ union branch. React and Vite on Vercel.',
+    desc: 'Digital home for NALC Branch 226, the Fort Worth letter carriers’ union, which has represented its members since 1889 and now has more than 1,100. A React single-page app built with Vite, Tailwind, and shadcn/ui, deployed on Vercel with edge caching, SSL, and SEO and Open Graph metadata. It serves branch news, meeting schedules, the officer directory, and member resources.',
     category: 'apps',
-    tags: ['Next.js', 'Vercel', 'TypeScript'],
+    tags: ['React', 'Vite', 'TypeScript', 'Tailwind CSS', 'shadcn/ui', 'Vercel'],
     diagram: 'assets/nalc-branch-arch.svg',
     github: 'https://github.com/samcraw1/branch-226-digital',
     live: 'https://branch-226-digital.vercel.app'
   },
   'deadline-tracker': {
-    name: 'deadline-tracker',
+    name: 'tpa-compliance-tracker',
     title: 'Deadline Tracker',
-    summary: 'Track and manage important deadlines with a clean, organized interface.',
-    desc: 'Track and manage important deadlines. Helps you stay on top of due dates with a clean, organized interface.',
+    summary: 'DOL notice deadline tracking for retirement plan administrators. Next.js, Supabase Postgres, and a daily cron.',
+    desc: 'Automated tracking of Department of Labor (DOL) retirement plan notice deadlines for third-party administrators (TPAs).',
     category: 'apps',
-    tags: ['React', 'Vercel', 'JavaScript'],
+    tags: ['Next.js 16', 'TypeScript', 'Supabase', 'PostgreSQL', 'Row Level Security', 'OpenAI GPT-4o-mini', 'Tailwind v4', 'shadcn/ui', 'Vercel Cron'],
     diagram: 'assets/deadline-tracker-arch.svg',
-    github: 'https://github.com/samcraw1/deadline-tracker',
-    live: 'https://deadline-tracker-lake.vercel.app/deadlines'
+    github: 'https://github.com/samcraw1/tpa-compliance-tracker',
+    live: 'https://deadline-tracker-lake.vercel.app/deadlines',
+    sections: [
+      {
+        heading: 'The problem',
+        body: 'TPAs manage dozens of retirement plans, each requiring 8–15 DOL-mandated notices per year. Missing a single deadline means compliance risk, potential penalties, and audit headaches. Most firms track this in spreadsheets that break when plans change, staff turn over, or plan year ends vary across clients.'
+      },
+      {
+        heading: 'What it does',
+        list: [
+          { title: 'Deadline engine', desc: 'Generates notice deadlines from each client’s plan type (401k, 403b, DB, 457b), plan year end, and features (Safe Harbor, Auto Enrollment, RMD). Handles annual, quarterly, and event-driven notices.' },
+          { title: 'Dashboard with overdue alerts', desc: 'At-a-glance view of what’s overdue, due this week, and upcoming.' },
+          { title: 'Status workflow', desc: 'Pending → Sent → Confirmed, with timestamped notes for an audit trail.' },
+          { title: 'Compliance reports', desc: 'CSV export and printable reports per client, ready for DOL auditors.' },
+          { title: 'AI compliance assistant', desc: 'Built-in chatbot for quick answers about DOL notice requirements and ERISA regulations.' },
+          { title: 'Daily cron', desc: 'Marks past-due deadlines as overdue and logs alerts.' }
+        ]
+      },
+      {
+        heading: 'Architecture decisions',
+        list: [
+          { title: 'Server Components everywhere', desc: 'All pages fetch data on the server, so the dashboard loads with real data instead of loading skeletons.' },
+          { title: 'Deadline engine as pure logic', desc: 'lib/deadline-engine.ts takes a client and notice types and returns deadline objects, with no side effects beyond the final database upsert. Easy to test and extend.' },
+          { title: 'URL-driven filters', desc: 'Filters live in searchParams, so filtered views are shareable and survive a refresh.' },
+          { title: 'Row Level Security', desc: 'Every table has RLS policies, so the schema is ready for multi-tenant isolation.' },
+          { title: 'Upsert keyed on plan_year', desc: 'A unique constraint on (client_id, notice_type_id, plan_year) means regenerating deadlines never creates duplicates.' }
+        ]
+      },
+      {
+        heading: 'What I’d add next',
+        list: [
+          'Email notifications at 60, 30, and 7 days before a deadline',
+          'Multi-tenant workspaces that isolate data by TPA firm using Supabase RLS',
+          'ICS calendar export for Outlook and Google Calendar',
+          'Bulk status updates',
+          'Branded PDF compliance reports',
+          'File attachments for proof of delivery',
+          'Audit versioning: who changed each status, when, and why'
+        ]
+      }
+    ]
+  },
+  'mail-carrier-game': {
+    name: 'usps-mail-carrier-game',
+    title: 'Mail Carrier Game',
+    summary: '2D Java Swing game about delivering mail, built with no game engine.',
+    desc: 'A 2D Java Swing game where you play a USPS mail carrier delivering packages across a pixel-art neighborhood. Built from scratch with only Java’s standard library: 4 levels (3 walking routes and 1 driving route), an LLV truck mechanic with road-only collision, tile-based maps loaded from text files, and pixel-art sprites drawn in code.',
+    category: 'apps',
+    tags: ['Java 17', 'Java Swing', 'AWT', '2D Arrays', 'File I/O', 'OOP', 'Game Loop', 'Collision Detection'],
+    github: 'https://github.com/samcraw1/usps-mail-carrier-game'
   },
   'usps-vehicle-inspection': {
     name: 'usps-vehicle-inspection',
-    title: 'USPS Pre-Route Scanners',
-    summary: 'AI-assisted vehicle inspection for USPS carriers. React Native and OpenAI Vision.',
-    desc: 'AI-powered vehicle inspection tracking system for USPS carriers. Digitizes the pre-route vehicle inspection process for mail carriers.',
+    title: 'USPS Vehicle Inspection AI System',
+    summary: 'Carriers photograph their truck and GPT-4o flags safety issues. 12 AWS services managed with Terraform.',
+    desc: 'Mobile app where USPS mail carriers photograph their LLV truck before starting their route. OpenAI GPT-4o checks the photo for safety issues such as tire damage, fluid leaks, body damage, and broken lights. If a vehicle is unsafe, the supervisor gets an email alert immediately, and supervisors can review every inspection on a web dashboard. There are two backend paths: serverless (API Gateway → Lambda) and EC2 (ALB → an Auto Scaling group in private subnets). All 12 AWS services are managed with Terraform.',
     category: 'ai',
-    tags: ['React Native', 'OpenAI Vision', 'JavaScript'],
-    diagram: 'assets/preroute-scanner-diagram.svg',
+    tags: ['React Native', 'OpenAI GPT-4o', 'Terraform', 'EC2', 'DynamoDB', 'S3', 'ALB', 'Lambda', 'SNS', 'VPC', 'Auto Scaling', 'CloudWatch'],
+    diagram: 'assets/usps-vehicle-inspection-arch.svg',
+    video: 'assets/usps-vehicle-inspection.mp4',
     github: 'https://github.com/samcraw1/usps-vehicle-inspection'
+  },
+  'vehicle-scanner-api': {
+    name: 'usps-vehicle-scanner-api',
+    title: 'USPS Vehicle Scanner API',
+    summary: 'Java and Spring Boot API that uses OpenAI Vision to check truck photos for hazards. JUnit-tested.',
+    desc: 'Java and Spring Boot backend that uses OpenAI Vision (GPT-4o-mini) to analyze USPS LLV truck photos for damage, tire issues, fluid leaks, and safety hazards. It has 4 REST endpoints, 5 JUnit tests with mocked services, and a built-in HTML upload page. Services are interface-based with dependency inversion, CORS is enabled, and secrets come from environment variables. It is the Java backend companion to the React Native inspection app.',
+    category: 'ai',
+    tags: ['Java 17', 'Spring Boot 3.3', 'OpenAI Vision API', 'JUnit 5', 'Mockito', 'AWS Elastic Beanstalk', 'Maven', 'REST API', 'MockMvc'],
+    github: 'https://github.com/samcraw1/usps-vehicle-scanner-api'
   },
   'usps-job-helper': {
     name: 'usps-job-helper-2',
@@ -245,6 +331,35 @@ function linkTo(href, label) {
   return a;
 }
 
+// Step-by-step diagram walkthrough: numbered buttons swap the image shown.
+function buildSteps(p) {
+  var wrap = el('div', 'steps-walk');
+  var nav = el('div', 'steps-nav');
+  nav.setAttribute('role', 'group');
+  nav.setAttribute('aria-label', 'Build steps');
+  var img = el('img');
+  var caption = el('p', 'steps-caption');
+  function show(i) {
+    img.src = p.steps[i].diagram;
+    img.alt = 'Step ' + (i + 1) + ': ' + p.steps[i].label;
+    caption.textContent = 'Step ' + (i + 1) + ' of ' + p.steps.length + ': ' + p.steps[i].label;
+    nav.querySelectorAll('button').forEach(function(b, j) { b.setAttribute('aria-pressed', String(j === i)); });
+  }
+  p.steps.forEach(function(step, i) {
+    var b = el('button', 'filter', String(i + 1));
+    b.type = 'button';
+    b.title = step.label;
+    b.setAttribute('aria-label', 'Step ' + (i + 1) + ': ' + step.label);
+    b.addEventListener('click', function() { show(i); });
+    nav.appendChild(b);
+  });
+  wrap.appendChild(nav);
+  wrap.appendChild(caption);
+  wrap.appendChild(img);
+  show(0);
+  return wrap;
+}
+
 function openProject(key) {
   var p = projects[key];
   if (!p) return;
@@ -257,8 +372,31 @@ function openProject(key) {
   tags.replaceChildren();
   p.tags.forEach(function(t) { tags.appendChild(el('li', null, t)); });
 
+  // Optional long-form write-up (headings with a paragraph or a list)
+  var sections = document.getElementById('dialog-sections');
+  sections.replaceChildren();
+  (p.sections || []).forEach(function(sec) {
+    sections.appendChild(el('h3', 'dialog-h', sec.heading));
+    if (sec.body) sections.appendChild(el('p', null, sec.body));
+    if (sec.list) {
+      var ul = el('ul', 'dialog-list');
+      sec.list.forEach(function(item) {
+        var li = el('li');
+        if (typeof item === 'string') {
+          li.textContent = item;
+        } else {
+          li.appendChild(el('strong', null, item.title));
+          li.appendChild(document.createTextNode(': ' + item.desc));
+        }
+        ul.appendChild(li);
+      });
+      sections.appendChild(ul);
+    }
+  });
+
   var media = document.getElementById('dialog-media');
   media.replaceChildren();
+  if (p.steps) media.appendChild(buildSteps(p));
   if (p.diagram) {
     var img = el('img');
     img.src = p.diagram;

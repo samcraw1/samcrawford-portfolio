@@ -274,6 +274,17 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; color: var(--ink);
   display: block; width: 100%; height: auto; margin-top: 24px;
   border: 1px solid var(--rule); border-radius: 6px; background: #fff;
 }
+#dialog-sections { color: var(--ink-soft); }
+.dialog-h { font-size: 19px; color: var(--ink); margin: 26px 0 0; }
+#dialog-sections p { margin: 8px 0 0; }
+.dialog-list { margin: 8px 0 0; padding-left: 20px; }
+.dialog-list li { margin-top: 6px; }
+.dialog-list strong { color: var(--ink); font-weight: 600; }
+.steps-walk { margin-top: 24px; }
+.steps-nav { display: flex; flex-wrap: wrap; gap: 8px; }
+.steps-nav .filter { min-width: 40px; }
+.steps-caption { margin: 12px 0 0; font-size: 14px; color: var(--ink-soft); }
+.steps-walk img { margin-top: 12px !important; }
 .dialog-links { display: flex; flex-wrap: wrap; gap: 20px; }
 .dialog-links .repo-link { margin-top: 24px; }
 

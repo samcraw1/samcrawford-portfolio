@@ -1,0 +1,51 @@
+<svg width="100%" viewBox="0 0 650 420" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<style>text { font-family: -apple-system, system-ui, sans-serif; }</style>
+
+<text x="325" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#141413">Step 4: Compute — ECS Fargate + ALB</text>
+<text x="325" y="48" text-anchor="middle" font-size="11" fill="#737268">Serverless containers behind a load balancer</text>
+
+<!-- ALB -->
+<rect x="175" y="70" width="300" height="50" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="325" y="90" text-anchor="middle" font-size="13" font-weight="500" fill="#712b13">Application Load Balancer</text>
+<text x="325" y="106" text-anchor="middle" font-size="10" fill="#993c1d">Public subnets — HTTP listener — /health check</text>
+
+<line x1="325" y1="120" x2="325" y2="150" stroke="#737268" stroke-width="1" marker-end="url(#arrow)"/>
+<text x="355" y="139" font-size="9" fill="#737268">SG-to-SG</text>
+
+<!-- ECS Fargate -->
+<rect x="125" y="152" width="400" height="65" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="325" y="174" text-anchor="middle" font-size="13" font-weight="500" fill="#712b13">ECS Fargate Cluster</text>
+<text x="325" y="190" text-anchor="middle" font-size="10" fill="#993c1d">Flask tasks in private subnets — no public IP</text>
+<text x="325" y="204" text-anchor="middle" font-size="10" fill="#993c1d">0.25 vCPU / 512 MB — Container Insights enabled</text>
+
+<!-- ECR -->
+<rect x="40" y="245" width="170" height="55" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="125" y="266" text-anchor="middle" font-size="12" font-weight="500" fill="#712b13">ECR Repository</text>
+<text x="125" y="282" text-anchor="middle" font-size="10" fill="#993c1d">Immutable tags, scan-on-push</text>
+
+<line x1="200" y1="217" x2="155" y2="243" stroke="#737268" stroke-width="1" marker-end="url(#arrow)"/>
+<text x="155" y="230" font-size="9" fill="#737268">pull</text>
+
+<!-- IAM Roles -->
+<rect x="240" y="245" width="170" height="55" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="325" y="263" text-anchor="middle" font-size="12" font-weight="500" fill="#712b13">Execution Role</text>
+<text x="325" y="279" text-anchor="middle" font-size="10" fill="#993c1d">ECR pull + logs + GetSecretValue</text>
+<text x="325" y="293" text-anchor="middle" font-size="10" fill="#993c1d">(scoped to exact secret ARN)</text>
+
+<rect x="440" y="245" width="170" height="55" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5"/>
+<text x="525" y="263" text-anchor="middle" font-size="12" font-weight="500" fill="#444441">Task Role</text>
+<text x="525" y="279" text-anchor="middle" font-size="10" fill="#5f5e5a">Empty — Flask doesn't call</text>
+<text x="525" y="293" text-anchor="middle" font-size="10" fill="#5f5e5a">AWS APIs directly</text>
+
+<!-- Key decision -->
+<rect x="60" y="325" width="530" height="75" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5"/>
+<text x="325" y="345" text-anchor="middle" font-size="12" font-weight="600" fill="#444441">Key Decisions</text>
+<text x="325" y="363" text-anchor="middle" font-size="11" fill="#5f5e5a">Fargate over EC2: no node patching, no ASG, bills per-task per-second</text>
+<text x="325" y="379" text-anchor="middle" font-size="11" fill="#5f5e5a">ALB over NLB: layer-7 health checks, path routing, WAF integration</text>
+<text x="325" y="395" text-anchor="middle" font-size="11" fill="#5f5e5a">ignore_changes[task_definition]: CI owns deploys, Terraform owns infra</text>
+</svg>

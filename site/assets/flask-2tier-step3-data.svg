@@ -1,0 +1,45 @@
+<svg width="100%" viewBox="0 0 600 380" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<style>text { font-family: -apple-system, system-ui, sans-serif; }</style>
+
+<text x="300" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#141413">Step 3: Data — RDS + Secrets Manager</text>
+<text x="300" y="48" text-anchor="middle" font-size="11" fill="#737268">Persistent data layer with layered security</text>
+
+<!-- App SG -->
+<rect x="60" y="75" width="200" height="45" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5"/>
+<text x="160" y="95" text-anchor="middle" font-size="12" font-weight="500" fill="#444441">App Security Group</text>
+<text x="160" y="110" text-anchor="middle" font-size="10" fill="#5f5e5a">Fargate tasks will use this</text>
+
+<!-- Arrow SG to SG -->
+<line x1="160" y1="120" x2="160" y2="165" stroke="#737268" stroke-width="1" marker-end="url(#arrow)"/>
+<text x="180" y="147" font-size="9" fill="#737268">SG-to-SG (3306)</text>
+
+<!-- DB SG + RDS -->
+<rect x="40" y="168" width="240" height="80" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="160" y="192" text-anchor="middle" font-size="13" font-weight="500" fill="#712b13">RDS MySQL 8.0</text>
+<text x="160" y="208" text-anchor="middle" font-size="10" fill="#993c1d">Multi-AZ — synchronous standby</text>
+<text x="160" y="222" text-anchor="middle" font-size="10" fill="#993c1d">GP3 storage, encrypted, deletion protected</text>
+<text x="160" y="236" text-anchor="middle" font-size="10" fill="#993c1d">publicly_accessible = false</text>
+
+<!-- Secrets Manager -->
+<rect x="330" y="168" width="220" height="80" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="440" y="192" text-anchor="middle" font-size="13" font-weight="500" fill="#712b13">Secrets Manager</text>
+<text x="440" y="208" text-anchor="middle" font-size="10" fill="#993c1d">DB credentials (JSON blob)</text>
+<text x="440" y="222" text-anchor="middle" font-size="10" fill="#993c1d">Password: Terraform-generated</text>
+<text x="440" y="236" text-anchor="middle" font-size="10" fill="#993c1d">Never in code or tfvars</text>
+
+<!-- Arrow RDS to Secrets -->
+<line x1="280" y1="208" x2="328" y2="208" stroke="#737268" stroke-width="1" stroke-dasharray="4 3"/>
+<text x="304" y="200" font-size="9" fill="#737268">creds</text>
+
+<!-- Protection layers -->
+<rect x="60" y="278" width="480" height="80" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5"/>
+<text x="300" y="298" text-anchor="middle" font-size="12" font-weight="600" fill="#444441">3 Layers of Protection</text>
+<text x="300" y="316" text-anchor="middle" font-size="11" fill="#5f5e5a">1. SG-to-SG: only app tier can reach DB on port 3306</text>
+<text x="300" y="332" text-anchor="middle" font-size="11" fill="#5f5e5a">2. Isolated subnets: no internet route even if SG misconfigured</text>
+<text x="300" y="348" text-anchor="middle" font-size="11" fill="#5f5e5a">3. publicly_accessible = false: no public DNS endpoint</text>
+</svg>

@@ -1,0 +1,54 @@
+<svg width="100%" viewBox="0 0 650 400" xmlns="http://www.w3.org/2000/svg">
+<defs>
+  <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse">
+    <path d="M2 1L8 5L2 9" fill="none" stroke="context-stroke" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+  </marker>
+</defs>
+<style>text { font-family: -apple-system, system-ui, sans-serif; }</style>
+
+<text x="325" y="28" text-anchor="middle" font-size="16" font-weight="600" fill="#141413">Step 5: Edge — CloudFront + ACM + Route 53</text>
+<text x="325" y="48" text-anchor="middle" font-size="11" fill="#737268">TLS termination at the edge, global CDN, DNS</text>
+
+<!-- User -->
+<rect x="225" y="70" width="200" height="36" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5"/>
+<text x="325" y="88" text-anchor="middle" font-size="12" font-weight="500" fill="#444441">User — app.example.com</text>
+
+<line x1="325" y1="106" x2="325" y2="130" stroke="#737268" stroke-width="1" marker-end="url(#arrow)"/>
+<text x="355" y="122" font-size="9" fill="#737268">HTTPS</text>
+
+<!-- Route 53 -->
+<rect x="40" y="70" width="160" height="36" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="120" y="88" text-anchor="middle" font-size="12" font-weight="500" fill="#712b13">Route 53</text>
+<text x="120" y="100" text-anchor="middle" font-size="9" fill="#993c1d">A + AAAA alias records</text>
+
+<line x1="200" y1="88" x2="223" y2="88" stroke="#737268" stroke-width="1" marker-end="url(#arrow)"/>
+
+<!-- CloudFront -->
+<rect x="150" y="132" width="350" height="60" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="325" y="154" text-anchor="middle" font-size="13" font-weight="500" fill="#712b13">CloudFront CDN</text>
+<text x="325" y="170" text-anchor="middle" font-size="10" fill="#993c1d">TLS 1.2 minimum — Shield Standard — CachingDisabled (dynamic app)</text>
+<text x="325" y="184" text-anchor="middle" font-size="10" fill="#993c1d">HTTP-to-HTTPS redirect — PriceClass_100</text>
+
+<!-- ACM -->
+<rect x="450" y="70" width="160" height="36" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="530" y="88" text-anchor="middle" font-size="12" font-weight="500" fill="#712b13">ACM Certificate</text>
+<text x="530" y="100" text-anchor="middle" font-size="9" fill="#993c1d">us-east-1 (CF requirement)</text>
+
+<line x1="500" y1="106" x2="450" y2="130" stroke="#737268" stroke-width="1" marker-end="url(#arrow)"/>
+
+<line x1="325" y1="192" x2="325" y2="220" stroke="#737268" stroke-width="1" marker-end="url(#arrow)"/>
+<text x="355" y="210" font-size="9" fill="#737268">HTTP (AWS backbone)</text>
+
+<!-- ALB -->
+<rect x="200" y="222" width="250" height="40" rx="8" fill="#faece7" stroke="#993c1d" stroke-width="0.5"/>
+<text x="325" y="240" text-anchor="middle" font-size="12" font-weight="500" fill="#712b13">ALB → ECS Fargate → RDS</text>
+<text x="325" y="254" text-anchor="middle" font-size="10" fill="#993c1d">(from previous steps)</text>
+
+<!-- Key decisions -->
+<rect x="60" y="290" width="530" height="90" rx="8" fill="#f1efe8" stroke="#5f5e5a" stroke-width="0.5"/>
+<text x="325" y="310" text-anchor="middle" font-size="12" font-weight="600" fill="#444441">Key Decisions</text>
+<text x="325" y="328" text-anchor="middle" font-size="11" fill="#5f5e5a">CachingDisabled: Flask is dynamic (sessions, CSRF) — can't cache HTML safely</text>
+<text x="325" y="344" text-anchor="middle" font-size="11" fill="#5f5e5a">ACM in us-east-1: CloudFront only reads certs from that region (AWS quirk)</text>
+<text x="325" y="360" text-anchor="middle" font-size="11" fill="#5f5e5a">Alias records over CNAMEs: works on zone apex, free queries, IPv4 + IPv6</text>
+<text x="325" y="376" text-anchor="middle" font-size="11" fill="#5f5e5a">HTTP origin: traffic stays on AWS backbone — TLS re-termination optional</text>
+</svg>
