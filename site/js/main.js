@@ -14,7 +14,8 @@ var projects = {
     category: 'data',
     featured: true,
     tags: ['Python', 'SQL', 'PostgreSQL', 'Amazon RDS', 'FastAPI', 'S3', 'Athena', 'Glue Data Catalog', 'Terraform'],
-    github: 'https://github.com/samcraw1/NBA-Project'
+    github: 'https://github.com/samcraw1/NBA-Project',
+    live: 'https://main.d2qpjzugpcgewv.amplifyapp.com'
   },
   'nfl-wr-pipeline': {
     name: 'nfl-wr-project',

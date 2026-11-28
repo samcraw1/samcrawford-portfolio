@@ -285,6 +285,7 @@ h1, h2, h3, h4 { font-family: var(--serif); font-weight: 500; color: var(--ink);
 .steps-nav .filter { min-width: 40px; }
 .steps-caption { margin: 12px 0 0; font-size: 14px; color: var(--ink-soft); }
 .steps-walk img { margin-top: 12px !important; }
+.feature-links { display: flex; flex-wrap: wrap; column-gap: 24px; }
 .dialog-links { display: flex; flex-wrap: wrap; gap: 20px; }
 .dialog-links .repo-link { margin-top: 24px; }
 
