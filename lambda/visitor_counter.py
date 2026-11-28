@@ -52,5 +52,7 @@ def handler(event, context):
             "Content-Type": "application/json",
             "Access-Control-Allow-Origin": "*",
         },
-        "body": json.dumps({"count": count}),
+        # DynamoDB hands numbers back as Decimal, which json.dumps can't
+        #   handle, so convert it to a plain int first.
+        "body": json.dumps({"count": int(count)}),
     }

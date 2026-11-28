@@ -3,463 +3,256 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>samcraw1 (Sam Crawford)</title>
-  <meta name="description" content="Sam Crawford — Cloud Architect & DevOps Engineer. GitHub-style portfolio.">
-  <link rel="stylesheet" href="css/style.css?v=2">
+  <title>Sam Crawford | Data pipelines and APIs with Python, SQL, and AWS</title>
+  <meta name="description" content="Sam Crawford builds data pipelines and APIs with Python, SQL, and AWS. Featured: an NBA analytics pipeline on RDS, S3, and Athena; a weekly NFL receiver rankings pipeline; and a payment reconciliation API.">
+  <link rel="stylesheet" href="css/style.css?v=5">
 </head>
 <body>
 
-  <!-- GitHub-style Top Nav -->
-  <nav class="gh-nav">
-    <div class="gh-nav-inner">
-      <a href="#" class="gh-nav-logo" id="nav-logo">SC</a>
-      <div class="gh-nav-search">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M10.68 11.74a6 6 0 0 1-7.922-8.982 6 6 0 0 1 8.982 7.922l3.04 3.04a.749.749 0 1 1-1.06 1.06l-3.04-3.04ZM11.5 7a4.499 4.499 0 1 0-8.997 0A4.499 4.499 0 0 0 11.5 7Z"></path></svg>
-        <input type="text" class="gh-nav-search-input" id="nav-search" placeholder="Type / to search">
-      </div>
-      <div class="gh-nav-links">
-        <a href="#" class="gh-nav-tab gh-nav-tab-active" data-tab="overview">Overview</a>
-        <a href="#" class="gh-nav-tab" data-tab="repositories">Repositories <span class="gh-nav-count">10</span></a>
-        <a href="#" class="gh-nav-tab" data-tab="contact">Contact</a>
-      </div>
+  <a class="skip-link" href="#work">Skip to work</a>
+
+  <header class="site-nav">
+    <div class="wrap site-nav-inner">
+      <a href="#top" class="wordmark">Sam Crawford</a>
+      <nav aria-label="Primary">
+        <ul class="nav-links">
+          <li><a href="#work">Work</a></li>
+          <li><a href="#index">Index</a></li>
+          <li><a href="#skills">Skills</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
     </div>
-  </nav>
+  </header>
 
-  <!-- Profile Header (like GitHub user page) -->
-  <div class="gh-profile-header">
-    <div class="gh-profile-header-inner">
-      <a href="#" class="gh-profile-tab gh-profile-tab-active" data-tab="overview">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path></svg>
-        Overview
-      </a>
-      <a href="#" class="gh-profile-tab" data-tab="repositories">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
-        Repositories <span class="gh-counter">10</span>
-      </a>
-      <a href="#" class="gh-profile-tab" data-tab="contact">
-        <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 2.75a.25.25 0 0 1 .25-.25h8.5a.25.25 0 0 1 .25.25v5.5a.25.25 0 0 1-.25.25h-3.5a.75.75 0 0 0-.53.22L3.5 11.44V9.25a.75.75 0 0 0-.75-.75h-1a.25.25 0 0 1-.25-.25Zm.25-1.75A1.75 1.75 0 0 0 0 2.75v5.5C0 9.216.784 10 1.75 10H2v1.543a1.457 1.457 0 0 0 2.487 1.03L7.061 10h3.189A1.75 1.75 0 0 0 12 8.25v-5.5A1.75 1.75 0 0 0 10.25 1ZM14.5 4.75a.25.25 0 0 0-.25-.25h-.5a.75.75 0 0 1 0-1.5h.5c.966 0 1.75.784 1.75 1.75v5.5A1.75 1.75 0 0 1 14.25 12H14v1.543a1.457 1.457 0 0 1-2.487 1.03L9.22 12.28a.749.749 0 1 1 1.06-1.06l2.22 2.22v-2.19a.75.75 0 0 1 .75-.75h1a.25.25 0 0 0 .25-.25Z"></path></svg>
-        Contact
-      </a>
-    </div>
-  </div>
+  <main id="top">
 
-  <!-- Main Content -->
-  <div class="gh-main">
+    <!-- Intro -->
+    <section class="hero wrap" aria-labelledby="hero-title">
+      <p class="eyebrow">Python &middot; SQL &middot; AWS</p>
+      <h1 id="hero-title" class="hero-title">I build data pipelines and APIs with Python, SQL, and AWS.</h1>
+      <div class="hero-body">
+        <p>Most recently: an NBA pipeline that serves recent seasons from PostgreSQL on Amazon RDS and puts five seasons in an S3 data lake that Athena queries, a weekly NFL receiver rankings job that runs on GitHub Actions, and a FastAPI service that reconciles payments against invoices with SQL joins.</p>
+        <p>I care about the parts that make data trustworthy: reruns that don&rsquo;t duplicate rows, checks before anything is written, and numbers that agree across stores. I&rsquo;m looking for data engineering roles.</p>
+      </div>
+      <ul class="hero-meta">
+        <li>Fort Worth, TX &rarr; Atlanta, GA</li>
+        <li><a href="https://github.com/samcraw1" target="_blank" rel="noopener">GitHub</a></li>
+        <li><a href="https://www.linkedin.com/in/samuel-crawford-978460182/" target="_blank" rel="noopener">LinkedIn</a></li>
+        <li><a href="#contact">Get in touch</a></li>
+        <li class="visitor" id="visitor-count" aria-live="polite"></li>
+      </ul>
+    </section>
 
-    <!-- OVERVIEW TAB -->
-    <div class="gh-tab-content gh-tab-active" id="tab-overview">
-      <div class="gh-layout">
+    <!-- Featured work -->
+    <section id="work" class="section wrap" aria-labelledby="work-title">
+      <div class="section-head">
+        <h2 id="work-title">Selected work</h2>
+        <p class="section-note">Three data projects, in the order I&rsquo;d walk you through them.</p>
+      </div>
 
-        <!-- Left Sidebar — Profile -->
-        <aside class="gh-sidebar">
-          <img src="assets/profile.png" alt="Sam Crawford" class="gh-avatar">
-          <h1 class="gh-display-name">Sam Crawford</h1>
-          <p class="gh-username">samcraw1</p>
-          <p class="gh-bio">Cloud Architect &amp; DevOps Engineer. Building secure, scalable infrastructure on AWS. This site runs on S3, CloudFront, Lambda, API Gateway, DynamoDB &mdash; deployed with Terraform.</p>
-          <div class="gh-profile-meta">
-            <span class="gh-meta-item">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="m12.596 11.596-3.535 3.536a1.5 1.5 0 0 1-2.122 0l-3.535-3.536a6.5 6.5 0 1 1 9.192 0ZM8 11.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7Z"></path></svg>
-              Fort Worth, TX &rarr; Atlanta, GA
-            </span>
-            <span class="gh-meta-item">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M7.775 3.275a.75.75 0 0 0 1.06 1.06l1.25-1.25a2 2 0 1 1 2.83 2.83l-2.5 2.5a2 2 0 0 1-2.83 0 .75.75 0 0 0-1.06 1.06 3.5 3.5 0 0 0 4.95 0l2.5-2.5a3.5 3.5 0 0 0-4.95-4.95l-1.25 1.25Zm-.025 5.475-2.5 2.5a2 2 0 0 1-2.83 0 2 2 0 0 1 0-2.83l1.25-1.25a.75.75 0 0 0-1.06-1.06l-1.25 1.25a3.5 3.5 0 0 0 4.95 4.95l2.5-2.5a3.5 3.5 0 0 0 0-4.95.75.75 0 0 0-1.06 1.06 2 2 0 0 1 0 2.83Z"></path></svg>
-              <a href="https://samcrawford.dev">samcrawford.dev</a>
-            </span>
-          </div>
-          <div class="gh-social-links">
-            <a href="https://github.com/samcraw1" target="_blank" rel="noopener" title="GitHub">
-              <svg width="20" height="20" viewBox="0 0 16 16" fill="currentColor"><path d="M8 0c4.42 0 8 3.58 8 8a8.013 8.013 0 0 1-5.45 7.59c-.4.08-.55-.17-.55-.38 0-.27.01-1.13.01-2.2 0-.75-.25-1.23-.54-1.48 1.78-.2 3.65-.88 3.65-3.95 0-.88-.31-1.59-.82-2.15.08-.2.36-1.02-.08-2.12 0 0-.67-.22-2.2.82-.64-.18-1.32-.27-2-.27-.68 0-1.36.09-2 .27-1.53-1.03-2.2-.82-2.2-.82-.44 1.1-.16 1.92-.08 2.12-.51.56-.82 1.28-.82 2.15 0 3.06 1.86 3.75 3.64 3.95-.23.2-.44.55-.51 1.07-.46.21-1.61.55-2.33-.66-.15-.24-.6-.83-1.23-.82-.67.01-.27.38.01.53.34.19.73.9.82 1.13.16.45.68 1.31 2.69.94 0 .67.01 1.3.01 1.49 0 .21-.15.45-.55.38A7.995 7.995 0 0 1 0 8c0-4.42 3.58-8 8-8Z"></path></svg>
-            </a>
-            <a href="https://www.linkedin.com/in/samuel-crawford-978460182/" target="_blank" rel="noopener" title="LinkedIn">
-              <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"></path></svg>
-            </a>
-          </div>
-          <div class="gh-visitor-badge">
-            <span id="visitor-count"></span>
-          </div>
-        </aside>
+      <!-- 01 NBA -->
+      <article class="feature" id="nba-data-pipeline" aria-labelledby="nba-title">
+        <div class="feature-index">
+          <span class="feature-num">01</span>
+          <span class="feature-kind">Flagship</span>
+        </div>
+        <div class="feature-main">
+          <h3 id="nba-title" class="feature-title">NBA Analytics Pipeline</h3>
+          <p class="feature-outcome">111,285 player-game rows across five seasons, queryable two ways: PostgreSQL for the app and Athena for analysis, with the two checked against each other.</p>
 
-        <!-- Right Content -->
-        <main class="gh-content">
-
-          <!-- Pinned Repos -->
-          <div class="gh-section-header">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M4.456.734a1.75 1.75 0 0 1 2.826.504l.613 1.327a3.081 3.081 0 0 0 2.084 1.707l1.408.422a1.75 1.75 0 0 1 .354 3.139l-1.316.756a3.082 3.082 0 0 0-1.296 1.836l-.345 1.379a1.75 1.75 0 0 1-2.826.96l-1.065-.98a3.083 3.083 0 0 0-2.225-.727l-1.452.122a1.75 1.75 0 0 1-1.48-2.59l.643-1.284a3.082 3.082 0 0 0 .06-2.37l-.344-1.03a1.75 1.75 0 0 1 1.902-2.332l1.478.236a3.082 3.082 0 0 0 2.11-.499Z"></path></svg>
-            Pinned
-          </div>
-          <div class="gh-pinned-grid">
-
-            <a href="#" class="gh-pinned-card" data-repo="unioncase-migration">
-              <img src="assets/unioncase-migration-arch.svg" alt="" class="gh-pinned-diagram">
-              <div class="gh-pinned-header">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
-                <span class="gh-pinned-name">unioncase-aws-migration</span>
-              </div>
-              <p class="gh-pinned-desc">Migrated production PWA to 10 AWS services in ~75 min. SAA-C03 aligned.</p>
-              <div class="gh-pinned-footer">
-                <span class="gh-lang"><span class="gh-lang-dot" style="background:#844FBA"></span> HCL</span>
-              </div>
-            </a>
-
-            <a href="#" class="gh-pinned-card" data-repo="memepickup-migration">
-              <img src="assets/memepickup-migration-arch.svg" alt="" class="gh-pinned-diagram">
-              <div class="gh-pinned-header">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
-                <span class="gh-pinned-name">memepickup-migration</span>
-              </div>
-              <p class="gh-pinned-desc">MemePickup AWS migration. Full cloud deployment with architecture redesign.</p>
-              <div class="gh-pinned-footer">
-                <span class="gh-lang"><span class="gh-lang-dot" style="background:#f1e05a"></span> JavaScript</span>
-              </div>
-            </a>
-
-            <a href="#" class="gh-pinned-card" data-repo="memepickup">
-              <img src="assets/memepickup-arch.svg" alt="" class="gh-pinned-diagram">
-              <div class="gh-pinned-header">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
-                <span class="gh-pinned-name">memepickup-architecture</span>
-              </div>
-              <p class="gh-pinned-desc">Mobile meme discovery app. React Native, iOS/Android, 120+ countries</p>
-              <div class="gh-pinned-footer">
-                <span class="gh-lang"><span class="gh-lang-dot" style="background:#f1e05a"></span> JavaScript</span>
-                <span class="gh-stars">
-                  <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path></svg>
-                  44.7k
-                </span>
-              </div>
-            </a>
-
-            <a href="#" class="gh-pinned-card" data-repo="unioncase">
-              <img src="assets/unioncase-arch.svg" alt="" class="gh-pinned-diagram">
-              <div class="gh-pinned-header">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
-                <span class="gh-pinned-name">unioncase-grievance-tracker</span>
-              </div>
-              <p class="gh-pinned-desc">Union grievance management PWA. React, Supabase, Vercel</p>
-              <div class="gh-pinned-footer">
-                <span class="gh-lang"><span class="gh-lang-dot" style="background:#3178c6"></span> TypeScript</span>
-              </div>
-            </a>
-
-            <a href="#" class="gh-pinned-card" data-repo="pybyte">
-              <img src="assets/pybyte-arch.svg" alt="" class="gh-pinned-diagram">
-              <div class="gh-pinned-header">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
-                <span class="gh-pinned-name">pybyte</span>
-              </div>
-              <p class="gh-pinned-desc">Interactive Python learning platform. AWS Lambda, DynamoDB, Terraform</p>
-              <div class="gh-pinned-footer">
-                <span class="gh-lang"><span class="gh-lang-dot" style="background:#3572A5"></span> Python</span>
-              </div>
-            </a>
-
-            <a href="#" class="gh-pinned-card" data-repo="security-scanner">
-              <img src="assets/security-scanner-diagram.svg" alt="" class="gh-pinned-diagram">
-              <div class="gh-pinned-header">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
-                <span class="gh-pinned-name">aws-security-scanner</span>
-              </div>
-              <p class="gh-pinned-desc">Automated S3 security scanning and remediation. Lambda, EventBridge, SNS, Terraform</p>
-              <div class="gh-pinned-footer">
-                <span class="gh-lang"><span class="gh-lang-dot" style="background:#3572A5"></span> Python</span>
-              </div>
-            </a>
-
-            <a href="#" class="gh-pinned-card" data-repo="usps-vehicle-inspection">
-              <img src="assets/preroute-scanner-diagram.svg" alt="" class="gh-pinned-diagram">
-              <div class="gh-pinned-header">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
-                <span class="gh-pinned-name">usps-vehicle-inspection</span>
-              </div>
-              <p class="gh-pinned-desc">AI-powered vehicle inspection for USPS carriers. React Native, OpenAI Vision</p>
-              <div class="gh-pinned-footer">
-                <span class="gh-lang"><span class="gh-lang-dot" style="background:#f1e05a"></span> JavaScript</span>
-              </div>
-            </a>
-
-            <a href="#" class="gh-pinned-card" data-repo="usps-job-helper">
-              <img src="assets/usps-jobhelper-arch.svg" alt="" class="gh-pinned-diagram">
-              <div class="gh-pinned-header">
-                <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M2 2.5A2.5 2.5 0 0 1 4.5 0h8.75a.75.75 0 0 1 .75.75v12.5a.75.75 0 0 1-.75.75h-2.5a.75.75 0 0 1 0-1.5h1.75v-2h-8a1 1 0 0 0-.714 1.7.75.75 0 1 1-1.072 1.05A2.495 2.495 0 0 1 2 11.5Zm10.5-1h-8a1 1 0 0 0-1 1v6.708A2.486 2.486 0 0 1 4.5 9h8ZM5 12.25a.25.25 0 0 1 .25-.25h3.5a.25.25 0 0 1 .25.25v3.25a.25.25 0 0 1-.4.2l-1.45-1.087a.249.249 0 0 0-.3 0L5.4 15.7a.25.25 0 0 1-.4-.2Z"></path></svg>
-                <span class="gh-pinned-name">usps-job-helper-2</span>
-              </div>
-              <p class="gh-pinned-desc">AI chatbot for USPS hiring guidance. Next.js, Claude API</p>
-              <div class="gh-pinned-footer">
-                <span class="gh-lang"><span class="gh-lang-dot" style="background:#3178c6"></span> TypeScript</span>
-              </div>
-            </a>
-
-          </div>
-
-          <!-- Contribution Graph -->
-          <div class="gh-section-header" style="margin-top: 24px;">
-            <span>331 contributions in the last year</span>
-          </div>
-          <div class="gh-contrib-graph">
-            <div class="gh-contrib-grid" id="contrib-grid"></div>
-            <div class="gh-contrib-legend">
-              <span>Less</span>
-              <span class="gh-contrib-box" style="background:#161b22"></span>
-              <span class="gh-contrib-box" style="background:#0e4429"></span>
-              <span class="gh-contrib-box" style="background:#006d32"></span>
-              <span class="gh-contrib-box" style="background:#26a641"></span>
-              <span class="gh-contrib-box" style="background:#39d353"></span>
-              <span>More</span>
+          <figure class="paths">
+            <figcaption class="visually-hidden">The pipeline's two data paths</figcaption>
+            <div class="paths-source">
+              <span class="node">NBA stats API</span>
+              <span class="arrow" aria-hidden="true">&rarr;</span>
+              <span class="node">Python extract &amp; transform</span>
             </div>
-          </div>
-
-          <!-- Skills / Language Bar -->
-          <div class="gh-section-header" style="margin-top: 24px;">
-            <span>Skills</span>
-          </div>
-          <div class="gh-lang-bar">
-            <div class="gh-lang-segment" style="width:30%;background:#FF9800" title="Cloud & AWS"></div>
-            <div class="gh-lang-segment" style="width:22%;background:#58a6ff" title="DevOps & IaC"></div>
-            <div class="gh-lang-segment" style="width:22%;background:#3fb950" title="Frontend"></div>
-            <div class="gh-lang-segment" style="width:16%;background:#bc8cff" title="Backend & APIs"></div>
-            <div class="gh-lang-segment" style="width:10%;background:#f778ba" title="AI / ML"></div>
-          </div>
-          <div class="gh-lang-labels">
-            <span class="gh-lang-label"><span class="gh-lang-dot" style="background:#FF9800"></span> Cloud &amp; AWS 30%</span>
-            <span class="gh-lang-label"><span class="gh-lang-dot" style="background:#58a6ff"></span> DevOps &amp; IaC 22%</span>
-            <span class="gh-lang-label"><span class="gh-lang-dot" style="background:#3fb950"></span> Frontend 22%</span>
-            <span class="gh-lang-label"><span class="gh-lang-dot" style="background:#bc8cff"></span> Backend &amp; APIs 16%</span>
-            <span class="gh-lang-label"><span class="gh-lang-dot" style="background:#f778ba"></span> AI / ML 10%</span>
-          </div>
-          <div class="gh-topics">
-            <span class="gh-topic">AWS</span>
-            <span class="gh-topic">Terraform</span>
-            <span class="gh-topic">S3</span>
-            <span class="gh-topic">Lambda</span>
-            <span class="gh-topic">CloudFront</span>
-            <span class="gh-topic">DynamoDB</span>
-            <span class="gh-topic">EC2</span>
-            <span class="gh-topic">IAM</span>
-            <span class="gh-topic">Docker</span>
-            <span class="gh-topic">GitHub Actions</span>
-            <span class="gh-topic">Linux</span>
-            <span class="gh-topic">Python</span>
-            <span class="gh-topic">JavaScript</span>
-            <span class="gh-topic">TypeScript</span>
-            <span class="gh-topic">React</span>
-            <span class="gh-topic">React Native</span>
-            <span class="gh-topic">Next.js</span>
-            <span class="gh-topic">PostgreSQL</span>
-            <span class="gh-topic">REST APIs</span>
-            <span class="gh-topic">API Gateway</span>
-          </div>
-
-        </main>
-      </div>
-    </div>
-
-    <!-- REPOSITORIES TAB -->
-    <div class="gh-tab-content" id="tab-repositories">
-      <div class="gh-repo-controls">
-        <input type="text" class="gh-repo-search" id="repo-search" placeholder="Find a repository...">
-        <select class="gh-repo-filter" id="repo-lang-filter">
-          <option value="">Language</option>
-          <option value="JavaScript">JavaScript</option>
-          <option value="TypeScript">TypeScript</option>
-          <option value="Python">Python</option>
-          <option value="HCL">HCL</option>
-        </select>
-      </div>
-      <div class="gh-repo-list" id="repo-list">
-
-        <div class="gh-repo-item" data-repo="unioncase-migration" data-lang="HCL" data-name="unioncase-aws-migration">
-          <div class="gh-repo-item-main">
-            <h3><a href="#" class="gh-repo-link" data-repo="unioncase-migration">unioncase-aws-migration</a> <span class="gh-public-badge">Public</span></h3>
-            <p>Migrated a production PWA from Vercel + Supabase to 10 AWS services in ~75 minutes via AWS CLI. SAA-C03 aligned.</p>
-          </div>
-          <div class="gh-repo-item-meta">
-            <span class="gh-lang"><span class="gh-lang-dot" style="background:#844FBA"></span> HCL</span>
-            <span class="gh-updated">Updated Apr 2026</span>
-          </div>
-        </div>
-
-        <div class="gh-repo-item" data-repo="memepickup-migration" data-lang="JavaScript" data-name="memepickup-migration">
-          <div class="gh-repo-item-main">
-            <h3><a href="#" class="gh-repo-link" data-repo="memepickup-migration">memepickup-migration</a> <span class="gh-public-badge">Public</span></h3>
-            <p>MemePickup AWS migration. Full cloud deployment with architecture redesign.</p>
-          </div>
-          <div class="gh-repo-item-meta">
-            <span class="gh-lang"><span class="gh-lang-dot" style="background:#f1e05a"></span> JavaScript</span>
-            <span class="gh-updated">Updated Apr 2026</span>
-          </div>
-        </div>
-
-        <div class="gh-repo-item" data-repo="memepickup" data-lang="JavaScript" data-name="memepickup-architecture">
-          <div class="gh-repo-item-main">
-            <h3><a href="#" class="gh-repo-link" data-repo="memepickup">memepickup-architecture</a> <span class="gh-public-badge">Public</span></h3>
-            <p>Mobile meme discovery app for iOS and Android. React Native, 120+ countries.</p>
-          </div>
-          <div class="gh-repo-item-meta">
-            <span class="gh-lang"><span class="gh-lang-dot" style="background:#f1e05a"></span> JavaScript</span>
-            <span class="gh-stars">
-              <svg width="16" height="16" viewBox="0 0 16 16" fill="#8b949e"><path d="M8 .25a.75.75 0 0 1 .673.418l1.882 3.815 4.21.612a.75.75 0 0 1 .416 1.279l-3.046 2.97.719 4.192a.751.751 0 0 1-1.088.791L8 12.347l-3.766 1.98a.75.75 0 0 1-1.088-.79l.72-4.194L.818 6.374a.75.75 0 0 1 .416-1.28l4.21-.611L7.327.668A.75.75 0 0 1 8 .25Z"></path></svg>
-              44.7k
-            </span>
-            <span class="gh-updated">Updated Mar 2026</span>
-          </div>
-        </div>
-
-        <div class="gh-repo-item" data-repo="unioncase" data-lang="TypeScript" data-name="unioncase-grievance-tracker">
-          <div class="gh-repo-item-main">
-            <h3><a href="#" class="gh-repo-link" data-repo="unioncase">unioncase-grievance-tracker</a> <span class="gh-public-badge">Public</span></h3>
-            <p>Union grievance management PWA. React, Supabase, Vercel.</p>
-          </div>
-          <div class="gh-repo-item-meta">
-            <span class="gh-lang"><span class="gh-lang-dot" style="background:#3178c6"></span> TypeScript</span>
-            <span class="gh-updated">Updated Mar 2026</span>
-          </div>
-        </div>
-
-        <div class="gh-repo-item" data-repo="pybyte" data-lang="Python" data-name="pybyte">
-          <div class="gh-repo-item-main">
-            <h3><a href="#" class="gh-repo-link" data-repo="pybyte">pybyte</a> <span class="gh-public-badge">Public</span></h3>
-            <p>Interactive Python learning platform. AWS Lambda, DynamoDB, Terraform.</p>
-          </div>
-          <div class="gh-repo-item-meta">
-            <span class="gh-lang"><span class="gh-lang-dot" style="background:#3572A5"></span> Python</span>
-            <span class="gh-updated">Updated Feb 2026</span>
-          </div>
-        </div>
-
-        <div class="gh-repo-item" data-repo="security-scanner" data-lang="Python" data-name="aws-security-scanner">
-          <div class="gh-repo-item-main">
-            <h3><a href="#" class="gh-repo-link" data-repo="security-scanner">aws-security-scanner</a> <span class="gh-public-badge">Public</span></h3>
-            <p>Automated S3 security scanning and remediation. Lambda, EventBridge, SNS, Terraform.</p>
-          </div>
-          <div class="gh-repo-item-meta">
-            <span class="gh-lang"><span class="gh-lang-dot" style="background:#3572A5"></span> Python</span>
-            <span class="gh-updated">Updated Feb 2026</span>
-          </div>
-        </div>
-
-        <div class="gh-repo-item" data-repo="usps-vehicle-inspection" data-lang="JavaScript" data-name="usps-vehicle-inspection">
-          <div class="gh-repo-item-main">
-            <h3><a href="#" class="gh-repo-link" data-repo="usps-vehicle-inspection">usps-vehicle-inspection</a> <span class="gh-public-badge">Public</span></h3>
-            <p>AI-powered vehicle inspection for USPS carriers. React Native, OpenAI Vision.</p>
-          </div>
-          <div class="gh-repo-item-meta">
-            <span class="gh-lang"><span class="gh-lang-dot" style="background:#f1e05a"></span> JavaScript</span>
-            <span class="gh-updated">Updated Jan 2026</span>
-          </div>
-        </div>
-
-        <div class="gh-repo-item" data-repo="usps-job-helper" data-lang="TypeScript" data-name="usps-job-helper-2">
-          <div class="gh-repo-item-main">
-            <h3><a href="#" class="gh-repo-link" data-repo="usps-job-helper">usps-job-helper-2</a> <span class="gh-public-badge">Public</span></h3>
-            <p>AI chatbot for USPS hiring guidance. Next.js, Claude API.</p>
-          </div>
-          <div class="gh-repo-item-meta">
-            <span class="gh-lang"><span class="gh-lang-dot" style="background:#3178c6"></span> TypeScript</span>
-            <span class="gh-updated">Updated Jan 2026</span>
-          </div>
-        </div>
-
-        <div class="gh-repo-item" data-repo="nalc-branch-226" data-lang="TypeScript" data-name="branch-226-digital">
-          <div class="gh-repo-item-main">
-            <h3><a href="#" class="gh-repo-link" data-repo="nalc-branch-226">branch-226-digital</a> <span class="gh-public-badge">Public</span></h3>
-            <p>Digital platform for NALC Branch 226 union communications.</p>
-          </div>
-          <div class="gh-repo-item-meta">
-            <span class="gh-lang"><span class="gh-lang-dot" style="background:#3178c6"></span> TypeScript</span>
-            <span class="gh-updated">Updated Dec 2025</span>
-          </div>
-        </div>
-
-        <div class="gh-repo-item" data-repo="deadline-tracker" data-lang="JavaScript" data-name="deadline-tracker">
-          <div class="gh-repo-item-main">
-            <h3><a href="#" class="gh-repo-link" data-repo="deadline-tracker">deadline-tracker</a> <span class="gh-public-badge">Public</span></h3>
-            <p>Track and manage important deadlines with a clean interface.</p>
-          </div>
-          <div class="gh-repo-item-meta">
-            <span class="gh-lang"><span class="gh-lang-dot" style="background:#f1e05a"></span> JavaScript</span>
-            <span class="gh-updated">Updated Nov 2025</span>
-          </div>
-        </div>
-
-      </div>
-    </div>
-
-    <!-- REPO DETAIL VIEW -->
-    <div class="gh-tab-content" id="tab-repo-detail">
-      <div class="gh-repo-detail">
-        <div class="gh-repo-detail-header">
-          <a href="#" class="gh-back-link" id="repo-back">&larr; Back</a>
-          <h2 class="gh-repo-detail-name" id="repo-detail-name"></h2>
-          <span class="gh-public-badge">Public</span>
-        </div>
-        <div class="gh-repo-detail-tabs">
-          <a href="#" class="gh-repo-tab gh-repo-tab-active" data-rtab="readme">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 1.75A.75.75 0 0 1 .75 1h4.253c1.227 0 2.317.59 3 1.501A3.743 3.743 0 0 1 11.006 1h4.245a.75.75 0 0 1 .75.75v10.5a.75.75 0 0 1-.75.75h-4.507a2.25 2.25 0 0 0-1.591.659l-.622.621a.75.75 0 0 1-1.06 0l-.622-.621A2.25 2.25 0 0 0 5.258 13H.75a.75.75 0 0 1-.75-.75Zm7.251 10.324.004-5.073-.002-2.253A2.25 2.25 0 0 0 5.003 2.5H1.5v9h3.757a3.75 3.75 0 0 1 1.994.574ZM8.755 4.75l-.004 7.322a3.752 3.752 0 0 1 1.992-.572H14.5v-9h-3.495a2.25 2.25 0 0 0-2.25 2.25Z"></path></svg>
-            README
-          </a>
-          <a href="#" class="gh-repo-tab" data-rtab="architecture">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M1.5 1.75V13.5h13.75a.75.75 0 0 1 0 1.5H.75a.75.75 0 0 1-.75-.75V1.75a.75.75 0 0 1 1.5 0Zm14.28 2.53-5.25 5.25a.75.75 0 0 1-1.06 0L7 7.06 4.28 9.78a.751.751 0 0 1-1.042-.018.751.751 0 0 1-.018-1.042l3.25-3.25a.75.75 0 0 1 1.06 0L10 7.94l4.72-4.72a.751.751 0 0 1 1.042.018.751.751 0 0 1 .018 1.042Z"></path></svg>
-            Architecture
-          </a>
-          <a href="#" class="gh-repo-tab" data-rtab="video">
-            <svg width="16" height="16" viewBox="0 0 16 16" fill="currentColor"><path d="M0 3.75C0 2.784.784 2 1.75 2h12.5c.966 0 1.75.784 1.75 1.75v8.5A1.75 1.75 0 0 1 14.25 14H1.75A1.75 1.75 0 0 1 0 12.25Zm1.75-.25a.25.25 0 0 0-.25.25v8.5c0 .138.112.25.25.25h12.5a.25.25 0 0 0 .25-.25v-8.5a.25.25 0 0 0-.25-.25ZM6 10.559V5.442a.25.25 0 0 1 .379-.215l4.264 2.559a.25.25 0 0 1 0 .428L6.379 10.774A.25.25 0 0 1 6 10.559Z"></path></svg>
-            Demo Video
-          </a>
-        </div>
-        <div class="gh-repo-tab-content gh-repo-tab-active" id="rtab-readme">
-          <div class="gh-readme" id="repo-readme-content"></div>
-        </div>
-        <div class="gh-repo-tab-content" id="rtab-architecture">
-          <div class="gh-arch-diagram" id="repo-arch-content"></div>
-        </div>
-        <div class="gh-repo-tab-content" id="rtab-video">
-          <div class="gh-video-content" id="repo-video-content"></div>
-        </div>
-      </div>
-    </div>
-
-    <!-- CONTACT TAB (New Issue style) -->
-    <div class="gh-tab-content" id="tab-contact">
-      <div class="gh-issue-form">
-        <div class="gh-issue-header">
-          <svg width="16" height="16" viewBox="0 0 16 16" fill="#3fb950"><path d="M8 9.5a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3Z"></path><path d="M8 0a8 8 0 1 1 0 16A8 8 0 0 1 8 0ZM1.5 8a6.5 6.5 0 1 0 13 0 6.5 6.5 0 0 0-13 0Z"></path></svg>
-          <h2>New Issue</h2>
-        </div>
-        <form id="contact-form" class="gh-issue-body">
-          <div class="gh-form-group">
-            <label for="name">Title</label>
-            <input type="text" id="name" name="name" required placeholder="Your name">
-          </div>
-          <div class="gh-form-group">
-            <label for="email">Email</label>
-            <input type="email" id="email" name="email" required placeholder="you@example.com">
-          </div>
-          <div class="gh-form-group">
-            <label for="message">Leave a comment</label>
-            <div class="gh-textarea-tabs">
-              <span class="gh-textarea-tab gh-textarea-tab-active">Write</span>
+            <div class="paths-lanes">
+              <div class="lane">
+                <span class="lane-label">Serving path</span>
+                <span class="node">Upsert recent seasons</span>
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+                <span class="node">PostgreSQL on Amazon RDS</span>
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+                <span class="node">FastAPI</span>
+                <span class="lane-note">Local PostgreSQL is the fallback</span>
+              </div>
+              <div class="lane">
+                <span class="lane-label">Analytics path</span>
+                <span class="node">Raw &amp; processed CSVs</span>
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+                <span class="node">S3 via boto3</span>
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+                <span class="node">Glue Data Catalog</span>
+                <span class="arrow" aria-hidden="true">&rarr;</span>
+                <span class="node">Athena</span>
+                <span class="lane-note">111,285 rows &middot; 5 seasons</span>
+              </div>
             </div>
-            <textarea id="message" name="message" rows="8" required placeholder="Your message..."></textarea>
+          </figure>
+
+          <h4 class="feature-sub">Architecture</h4>
+          <ol class="steps">
+            <li><strong>Extract.</strong> Python pulls player game logs one season at a time, with retries, and keeps the raw CSVs unchanged.</li>
+            <li><strong>Transform.</strong> pandas derives the season from the source ID so any season loads, joins team and player names, handles zero-attempt shooting percentages, and runs validation asserts.</li>
+            <li><strong>Serve.</strong> Recent seasons are upserted into PostgreSQL on Amazon RDS with <code>INSERT &hellip; ON CONFLICT DO UPDATE</code>, so reruns are safe. FastAPI reads it through <code>DATABASE_URL</code> and falls back to local PostgreSQL.</li>
+            <li><strong>Analyze.</strong> Raw and processed CSVs go to S3 with boto3. Athena queries all five seasons through a Glue Data Catalog table whose definition is managed in Terraform.</li>
+            <li><strong>Validate.</strong> Athena results for the seasons held in both stores are checked against PostgreSQL.</li>
+          </ol>
+          <p class="status"><span class="status-label">Not done yet</span> The daily refresh isn&rsquo;t scheduled. An EventBridge rule exists but is disabled because the stats API times out from AWS, so the pipeline runs by hand for now.</p>
+
+          <ul class="stack" aria-label="Stack">
+            <li>Python</li><li>SQL</li><li>pandas</li><li>PostgreSQL</li><li>Amazon RDS</li><li>FastAPI</li><li>S3</li><li>boto3</li><li>Glue Data Catalog</li><li>Athena</li><li>Terraform</li>
+          </ul>
+          <div class="feature-links">
+            <a class="repo-link" href="https://main.d2qpjzugpcgewv.amplifyapp.com" target="_blank" rel="noopener">Open the live NBA site <span aria-hidden="true">&#8599;</span></a>
+            <a class="repo-link" href="https://github.com/samcraw1/NBA-Project" target="_blank" rel="noopener">View NBA-Project on GitHub <span aria-hidden="true">&#8599;</span></a>
           </div>
-          <div class="gh-form-actions">
-            <button type="submit" class="gh-btn-green">Submit new issue</button>
-          </div>
-          <p id="form-status" class="form-status"></p>
-        </form>
+        </div>
+      </article>
+
+      <!-- 02 NFL -->
+      <article class="feature" id="nfl-wr-pipeline" aria-labelledby="nfl-title">
+        <div class="feature-index">
+          <span class="feature-num">02</span>
+          <span class="feature-kind">Scheduled pipeline</span>
+        </div>
+        <div class="feature-main">
+          <h3 id="nfl-title" class="feature-title">NFL Wide Receiver Rankings Pipeline</h3>
+          <p class="feature-outcome">Scores every wide receiver each week and stores the rankings in Supabase. A GitHub Actions job runs it every Tuesday and writes a week only after every game has a result.</p>
+
+          <h4 class="feature-sub">Architecture</h4>
+          <ol class="steps">
+            <li><strong>Ingest.</strong> Weekly player stats and receiving drop stats come from nflverse Parquet release files, and schedules and results come from CSV.</li>
+            <li><strong>Check.</strong> A completeness gate skips any week with unfinished games. Table reads page past the 1,000-row API cap instead of silently truncating, and ambiguous player names log a warning.</li>
+            <li><strong>Rank.</strong> A tiered points formula produces weekly rankings, season averages, and next-week predictions.</li>
+            <li><strong>Store.</strong> Raw rows are uploaded as Parquet, and players, weekly stats, and rankings are upserted into Supabase (PostgreSQL).</li>
+            <li><strong>Run.</strong> GitHub Actions runs it on a weekly schedule or on demand. Every script takes <code>--dry-run</code>, which fetches and scores but writes nothing.</li>
+          </ol>
+          <p class="status"><span class="status-label">Note</span> The pipeline started in Python and now runs as a TypeScript port. Tests check the port against outputs saved from the original Python code.</p>
+
+          <ul class="stack" aria-label="Stack">
+            <li>TypeScript</li><li>Python (original)</li><li>Parquet</li><li>Supabase</li><li>PostgreSQL</li><li>GitHub Actions</li><li>Vitest</li>
+          </ul>
+          <a class="repo-link" href="https://github.com/samcraw1/nfl-wr-project" target="_blank" rel="noopener">View nfl-wr-project on GitHub <span aria-hidden="true">&#8599;</span></a>
+        </div>
+      </article>
+
+      <!-- 03 Payments -->
+      <article class="feature" id="payment-reconciliation-api" aria-labelledby="pay-title">
+        <div class="feature-index">
+          <span class="feature-num">03</span>
+          <span class="feature-kind">API</span>
+        </div>
+        <div class="feature-main">
+          <h3 id="pay-title" class="feature-title">Payment Reconciliation API</h3>
+          <p class="feature-outcome">Classifies every invoice as paid, partly paid, unpaid, or overpaid and flags payments that match no invoice, backed by 34 automated pytest tests.</p>
+
+          <h4 class="feature-sub">Architecture</h4>
+          <ol class="steps">
+            <li><strong>Store.</strong> A MySQL schema owned by SQL files. Payments deliberately have no foreign key to invoices, so unmatched payments can still be stored.</li>
+            <li><strong>Reconcile.</strong> SQL <code>LEFT JOIN</code>s and <code>INNER JOIN</code>s match payments to invoices. Money stays <code>DECIMAL</code> end to end.</li>
+            <li><strong>Serve.</strong> FastAPI endpoints import payments, invoices, and contracts, and return the reconciliation report and its exceptions.</li>
+            <li><strong>Test.</strong> 34 pytest tests cover seed row counts, the answer key for twelve join queries, and the API, with the original CSV version kept as a regression check.</li>
+          </ol>
+
+          <ul class="stack" aria-label="Stack">
+            <li>Python</li><li>FastAPI</li><li>MySQL</li><li>SQL</li><li>SQLAlchemy</li><li>pytest</li>
+          </ul>
+          <a class="repo-link" href="https://github.com/samcraw1/Payment-Reconciliation-API" target="_blank" rel="noopener">View Payment-Reconciliation-API on GitHub <span aria-hidden="true">&#8599;</span></a>
+        </div>
+      </article>
+    </section>
+
+    <!-- Project index -->
+    <section id="index" class="section wrap" aria-labelledby="index-title">
+      <div class="section-head">
+        <h2 id="index-title">Index</h2>
+        <p class="section-note">Everything else I&rsquo;ve built, including cloud migrations, apps, and AI tools.</p>
       </div>
-    </div>
 
-  </div>
+      <div class="index-controls">
+        <div class="filters" role="group" aria-label="Filter projects">
+          <button type="button" class="filter" data-filter="all" aria-pressed="true">All</button>
+          <button type="button" class="filter" data-filter="data" aria-pressed="false">Data</button>
+          <button type="button" class="filter" data-filter="cloud" aria-pressed="false">Cloud</button>
+          <button type="button" class="filter" data-filter="apps" aria-pressed="false">Apps</button>
+          <button type="button" class="filter" data-filter="ai" aria-pressed="false">AI</button>
+        </div>
+        <label class="search">
+          <span class="visually-hidden">Search projects</span>
+          <input type="search" id="project-search" placeholder="Search projects or tools" autocomplete="off">
+        </label>
+      </div>
+      <p class="index-count" id="index-count" aria-live="polite"></p>
+      <ul class="index-list" id="index-list"></ul>
+      <noscript><p>Browse every project on <a href="https://github.com/samcraw1">GitHub</a>.</p></noscript>
+    </section>
 
-  <!-- Footer -->
-  <footer class="gh-footer">
-    <div class="gh-footer-inner">
+    <!-- Skills -->
+    <section id="skills" class="section wrap" aria-labelledby="skills-title">
+      <div class="section-head">
+        <h2 id="skills-title">Skills</h2>
+      </div>
+      <dl class="skills">
+        <div><dt>Languages</dt><dd>Python, SQL, TypeScript, JavaScript</dd></div>
+        <div><dt>Data</dt><dd>PostgreSQL, MySQL, pandas, Parquet, ETL, upserts, data validation</dd></div>
+        <div><dt>AWS</dt><dd>S3, RDS, Athena, Glue Data Catalog, Lambda, EventBridge, API Gateway, DynamoDB, CloudFront</dd></div>
+        <div><dt>Tooling</dt><dd>FastAPI, Terraform, GitHub Actions, pytest, Docker, Supabase</dd></div>
+      </dl>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="section wrap" aria-labelledby="contact-title">
+      <div class="section-head">
+        <h2 id="contact-title">Contact</h2>
+        <p class="section-note">Hiring for a data role, or want to talk through one of these projects? Send a note.</p>
+      </div>
+      <form id="contact-form" class="contact-form">
+        <div class="field">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required autocomplete="name">
+        </div>
+        <div class="field">
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required autocomplete="email">
+        </div>
+        <div class="field field-wide">
+          <label for="message">Message</label>
+          <textarea id="message" name="message" rows="6" required></textarea>
+        </div>
+        <div class="field-wide form-actions">
+          <button type="submit" class="btn">Send message</button>
+          <p id="form-status" class="form-status" role="status"></p>
+        </div>
+      </form>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap site-footer-inner">
       <span>&copy; 2026 Sam Crawford</span>
-      <span>Built with AWS &mdash; deployed with Terraform</span>
-      <span><a href="https://github.com/samcraw1">GitHub</a></span>
+      <span>This site runs on S3, CloudFront, API Gateway, Lambda, and DynamoDB, deployed with Terraform.</span>
+      <a href="https://github.com/samcraw1" target="_blank" rel="noopener">GitHub</a>
     </div>
   </footer>
 
-  <script src="js/main.js?v=2"></script>
+  <!-- Project detail -->
+  <dialog id="project-dialog" class="project-dialog" aria-labelledby="dialog-title">
+    <div class="dialog-inner">
+      <button type="button" class="dialog-close" id="dialog-close" aria-label="Close">&times;</button>
+      <p class="eyebrow" id="dialog-kind"></p>
+      <h2 id="dialog-title"></h2>
+      <p id="dialog-desc"></p>
+      <div id="dialog-sections"></div>
+      <ul class="stack" id="dialog-tags" aria-label="Stack"></ul>
+      <div id="dialog-media"></div>
+      <div class="dialog-links" id="dialog-links"></div>
+    </div>
+  </dialog>
+
+  <script src="js/main.js?v=6"></script>
 </body>
 </html>
